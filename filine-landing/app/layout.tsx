@@ -8,6 +8,8 @@ import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import { Divider } from "@nextui-org/divider";
 import {subtitle} from "@/components/primitives";
+import {text} from "stream/consumers";
+import {blue, red} from "color-name";
 export const metadata: Metadata = {
 	title: {
 		default: siteConfig.name,
@@ -46,11 +48,30 @@ export default function RootLayout({
 							{children}
 						</main>
 						<Divider className="my-4" />
-						<footer className="w-full grid items-center justify-center py-3">
-							<p className={subtitle({ class: "mt-4" })}>Filine Banque</p>
-							<p>Une filiale du groupe ATSBANCK</p>
+						<footer className="w-full py-3 grid grid-cols-3 gap-4 items-center justify-center">
+							<div className="flex flex-col items-center justify-center">
+								{/* Contenu de la première colonne */}
+								<p>Mentions légals</p>
+								<p>Traitement des données</p>
+								<p>CGU</p>
+							</div>
 
+							<div className="flex flex-col items-center justify-center">
+								{/* Contenu de la deuxième colonne */}
+								<p>Filine Banque</p>
+								<p>Une filiale du groupe ATSBANCK</p>
+							</div>
+
+							<div className="flex flex-col items-center justify-center">
+								{/* Contenu de la troisième colonne */}
+								<p>Site fictif, developper par :</p>
+								<p>Axel Guillouard</p>
+								<p>Baptiste Rodrigues</p>
+								<p>Cyprien Bourre</p>
+								<p>Amandine Lafontaine</p>
+							</div>
 						</footer>
+
 					</div>
 				</Providers>
 			</body>

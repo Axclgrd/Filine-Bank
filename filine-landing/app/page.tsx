@@ -11,6 +11,7 @@ import {Button} from "@nextui-org/button";
 
 
 
+
 export default function Home() {
 
 	return (
@@ -20,7 +21,7 @@ export default function Home() {
 				<h1 className={title({ color: "blue" })}>Filine :&nbsp;</h1>
 				<br />
 				<h1 className={title()}>
-					Votre confiance numérique , <br /> notre engagement financier.c
+					Votre confiance numérique , <br /> notre engagement financier.
 				</h1>
 				<h2 className={subtitle({ class: "mt-4" })}>
 					Une banque du groupe ATSBANCK
