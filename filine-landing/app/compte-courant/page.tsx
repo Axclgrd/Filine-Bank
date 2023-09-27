@@ -36,7 +36,7 @@ export default function AboutPage() {
 					<Image
 						alt="Card background"
 						className="object-cover rounded-xl"
-						src="/carte_mastercard.jpeg"
+						src="/carte_mastercard.png"
 
 						width={400}
 					/>
@@ -51,7 +51,7 @@ export default function AboutPage() {
 					<Image
 						alt="Card background"
 						className="object-cover rounded-xl"
-						src="/visa_classique.png"
+						src="/visa_classic.png"
 
 						width={400}
 					/>
@@ -68,7 +68,7 @@ export default function AboutPage() {
 					<Image
 						alt="Card background"
 						className="object-cover rounded-xl"
-						src="/visa_premiere.jpeg"
+						src="/visa_premiere.png"
 
 						width={400}
 					/>
@@ -83,7 +83,7 @@ export default function AboutPage() {
 					<Image
 						alt="Card background"
 						className="object-cover rounded-xl"
-						src="/visa_infinite.jpeg"
+						src="/visa_infinite.png"
 
 						width={400}
 					/>
