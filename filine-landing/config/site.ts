@@ -5,59 +5,39 @@ export const siteConfig = {
 	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
 		{
-			label: "Home",
+			label: "Accueil",
 			href: "/",
 		},
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Compte Courant",
+      href: "/compte-courant",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "Assurance Vie",
+      href: "/assurance-vie",
     },
     {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
+      label: "Mutuelle",
+      href: "/mutuelle",
     }
 	],
 	navMenuItems: [
 		{
-			label: "Profile",
-			href: "/profile",
+			label: "Accueil",
+			href: "/",
 		},
 		{
-			label: "Dashboard",
-			href: "/dashboard",
+            label: "Compte Courant",
+            href: "/compte-courant",
 		},
 		{
-			label: "Projects",
-			href: "/projects",
+			label: "Assurance Vie",
+			href: "/assurance-vie",
 		},
 		{
-			label: "Team",
-			href: "/team",
-		},
-		{
-			label: "Calendar",
-			href: "/calendar",
-		},
-		{
-			label: "Settings",
-			href: "/settings",
-		},
-		{
-			label: "Help & Feedback",
-			href: "/help-feedback",
-		},
-		{
-			label: "Logout",
-			href: "/logout",
-		},
+			label: "Mutuelle",
+			href: "/mutuelle",
+		}
 	],
 	links: {
 		github: "https://github.com/nextui-org/nextui",

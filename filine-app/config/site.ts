@@ -10,7 +10,7 @@ export const siteConfig = {
 		},
     {
       label: "Docs",
-      href: "/docs",
+      href: "/mutuelle",
     },
     {
       label: "Pricing",
@@ -18,11 +18,11 @@ export const siteConfig = {
     },
     {
       label: "Blog",
-      href: "/blog",
+      href: "/assurance-vie",
     },
     {
       label: "About",
-      href: "/about",
+      href: "/compte-courant",
     }
 	],
 	navMenuItems: [
