@@ -43,6 +43,3 @@ SLAM:
 L’utilisation des clouds et l’exploitation sécurisée des données en ligne. 
 
 Production : Front/Back/BDD/IAM/2FA
-
-
-![image](https://github.com/Axclgrd/Filine-Bank/assets/105812527/ac69fe41-5564-42c2-bb48-2dfab38ab523)
