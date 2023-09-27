@@ -1,3 +1,4 @@
+'use client'
 import NextLink from "next/link";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
@@ -8,11 +9,14 @@ import { title, subtitle } from "@/components/primitives";
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import {Image} from "@nextui-org/image";
 import {Button} from "@nextui-org/button";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/modal";
+import {useDisclosure} from "@nextui-org/use-disclosure";
 
 
 
 
 export default function Home() {
+	const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
 	return (
 		<section className="flex flex-col items-center justify-center gap-6 py-8 md:py-10">
@@ -161,6 +165,47 @@ export default function Home() {
 						</CardFooter>
 					</Card>
 				</div>
+			</div>
+			<div className="mt-8">
+
+				<Button onPress={onOpen}>Open Modal</Button>
+				<Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+					<ModalContent>
+						{(onClose) => (
+							<>
+								<ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+								<ModalBody>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Nullam pulvinar risus non risus hendrerit venenatis.
+										Pellentesque sit amet hendrerit risus, sed porttitor quam.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Nullam pulvinar risus non risus hendrerit venenatis.
+										Pellentesque sit amet hendrerit risus, sed porttitor quam.
+									</p>
+									<p>
+										Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
+										dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis.
+										Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod.
+										Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur
+										proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
+									</p>
+								</ModalBody>
+								<ModalFooter>
+									<Button color="danger" variant="light" onPress={onClose}>
+										Close
+									</Button>
+									<Button color="primary" onPress={onClose}>
+										Action
+									</Button>
+								</ModalFooter>
+							</>
+						)}
+					</ModalContent>
+				</Modal>
+
 			</div>
 			<div className="mt-8">
 				<h2 className={title()}> Filine vous accompagne dans vos projets </h2>
