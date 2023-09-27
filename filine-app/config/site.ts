@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Next.js + NextUI",
-	description: "Make beautiful websites regardless of your design experience.",
+	name: "Filine - Banque et Assurance 100% en ligne",
+	description: "Filine est une banque et assurance 100% en ligne. Ouvrez un compte courant, une assurance vie ou une mutuelle en quelques minutes.",
 	navItems: [
 		{
 			label: "Home",
