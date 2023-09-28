@@ -13,6 +13,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-
 import {useDisclosure} from "@nextui-org/use-disclosure";
 import {color} from "framer-motion";
 import {LessWasr} from "@/components/icons";
+import {LogoAcceuil} from "@/components/icons";
 
 
 export default function Home() {
@@ -21,9 +22,11 @@ export default function Home() {
     return (
         <section className="flex flex-col items-center justify-center gap-6 py-8 md:py-10">
             <div className="inline-block max-w-2xl text-center justify-center">
-                <h1 className={title()}>🏦 Banque &nbsp;</h1>
-                <h1 className={title({color: "blue"})}>Filine :&nbsp;</h1>
-                <br/>
+                <div className="flex items-center justify-center">
+                    <LogoAcceuil/>
+                    <h1 className={title()}>Banque &nbsp; </h1>
+                    <h1 className={title({color: "blue"})}>Filine :&nbsp;</h1>
+                </div>
                 <h1 className={title()}>
                     Votre confiance numérique , <br/> notre engagement financier.
                 </h1>
