@@ -91,7 +91,7 @@ export const Navbar = () => {
 						href={siteConfig.links.sponsor}
 						variant="flat"
 					>
-						Je sais pas
+						Déconnexion
 					</Button>
 				</NavbarItem>
 			</NavbarContent>
