@@ -47,7 +47,7 @@ export default function Home() {
             <Image
                 isBlurred
                 height={240}
-                src="https://blog.yourewelcome.com/wp-content/uploads/Grand-slide-Groupe-ados-adolescents-heureux.jpg"
+                src="https://celinedomecq.com/wp-content/uploads/2022/02/etre-heureux-en-couple.png"
                 alt="NextUI Album Cover"
                 style={{width: '100vh', objectFit: 'cover'}}
             />
