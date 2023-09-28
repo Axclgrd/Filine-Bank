@@ -14,7 +14,7 @@ export const siteConfig = {
     },
     {
       label: "Pricing",
-      href: "/pricing",
+      href: "/register",
     },
     {
       label: "Blog",
@@ -60,6 +60,8 @@ export const siteConfig = {
 		},
 	],
 	links: {
+		
+		ouvriruncompte: "/register",
 		github: "https://github.com/nextui-org/nextui",
 		twitter: "https://twitter.com/getnextui",
 		docs: "https://nextui.org",
