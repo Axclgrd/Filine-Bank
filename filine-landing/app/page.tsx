@@ -175,7 +175,7 @@ export default function Home() {
             </div>
             <div className="mt-8">
 
-                <Button color={"primary"} radius="full" variant="shadow" onPress={onOpen}>Découvrir tout les
+                <Button color={"primary"} radius="full" variant="shadow" size="lg" onPress={onOpen}>Découvrir tout les
                     services</Button>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                     <ModalContent>
@@ -240,7 +240,7 @@ export default function Home() {
                     <h2 className={title()}>de Filine&nbsp;</h2>
                     <LessWasr />
                 </div>
-                <div className="text-left mt-8 p-5 rounded-lg shadow-md">
+                <div className="text-left mt-8 p-5 rounded-lg shadow-large">
                     <p className="text-lg leading-relaxed mb-4">
                         Chez <span className="text-green-600 font-bold">Filine</span>, nous sommes conscients de l'impact des activités humaines sur notre planète. C'est pourquoi nous avons intégré la durabilité et la responsabilité environnementale au cœur de notre stratégie d'entreprise.
                     </p>
