@@ -17,7 +17,7 @@ export default function CompteCourant() {
                                 <p>M. PRENOM NOM</p>
                             </div>
                             <div className="px-2 text-center">
-                                <p className="text-green-600 font-bold">+ 25 000€</p>
+                                <p className="text-green-600 font-bold">25 000€</p>
                                 <Link>
                                     <Button size="sm" radius="full" color="primary">
                                         Consulter
