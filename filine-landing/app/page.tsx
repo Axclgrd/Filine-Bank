@@ -184,7 +184,7 @@ export default function Home() {
                                 <ModalHeader className="flex flex-col gap-1">Services Filine</ModalHeader>
                                 <ModalBody>
                                     <p>
-                                        Découvrez les solutions d'épargne et de financement proposées par Filine,
+                                        Découvrez les solutions d&apos;épargne et de financement proposées par Filine,
                                         conçues pour répondre à vos besoins financiers.
                                     </p>
 
@@ -200,14 +200,14 @@ export default function Home() {
                                             moyen terme.
                                         </li>
                                         <li><strong>Livret PEA</strong> : Pour ceux qui souhaitent investir en bourse
-                                            tout en profitant d'avantages fiscaux.
+                                            tout en profitant d&apos;avantages fiscaux.
                                         </li>
                                     </ul>
 
                                     <h3>Prêts</h3>
                                     <ul>
-                                        <li><strong>Prêt Consommation</strong> : Financez vos projets personnels, qu'il
-                                            s'agisse d'un voyage, d'une nouvelle voiture ou d'un événement spécial.
+                                        <li><strong>Prêt Consommation</strong> : Financez vos projets personnels, qu&apos;il
+                                            s&apos;agisse d&apos;un voyage, d&apos;une nouvelle voiture ou d&apos;un événement spécial.
                                         </li>
                                         <li><strong>Prêt Immobilier</strong> : Réalisez votre rêve de propriété avec des
                                             taux compétitifs et des conditions flexibles.
@@ -215,7 +215,7 @@ export default function Home() {
                                     </ul>
 
                                     <p>
-                                        Avec <strong>Filine</strong>, gérer vos finances n'a jamais été aussi simple et
+                                        Avec <strong>Filine</strong>, gérer vos finances n&apos;a jamais été aussi simple et
                                         efficace. Explorez nos offres et trouvez celle qui vous convient le mieux.
                                     </p>
                                 </ModalBody>
@@ -242,24 +242,24 @@ export default function Home() {
                 </div>
                 <div className="text-left mt-8 p-5 rounded-lg shadow-large">
                     <p className="text-lg leading-relaxed mb-4">
-                        Chez <span className="text-green-600 font-bold">Filine</span>, nous sommes conscients de l'impact des activités humaines sur notre planète. C'est pourquoi nous avons intégré la durabilité et la responsabilité environnementale au cœur de notre stratégie d'entreprise.
+                        Chez <span className="text-green-600 font-bold">Filine</span>, nous sommes conscients de l&apos;impact des activités humaines sur notre planète. C&apos;est pourquoi nous avons intégré la durabilité et la responsabilité environnementale au cœur de notre stratégie d&apos;entreprise.
                     </p>
 
                     <h3 className="text-xl text-green-500 font-semibold mb-3">Initiatives Vertes</h3>
                     <ul className="list-disc list-inside pl-5 mb-4">
-                        <li className="my-2"><span className="font-bold">Banque Numérique</span>: En étant une banque 100% en ligne, nous réduisons considérablement notre empreinte carbone en minimisant l'utilisation de papier et en évitant les déplacements physiques inutiles.</li>
-                        <li className="my-2"><span className="font-bold">Mutuelle Cobalt Écolo</span>: Une offre d'assurance respectueuse de l'environnement, reflétant notre engagement à soutenir des pratiques durables.</li>
+                        <li className="my-2"><span className="font-bold">Banque Numérique</span>: En étant une banque 100% en ligne, nous réduisons considérablement notre empreinte carbone en minimisant l&apos;utilisation de papier et en évitant les déplacements physiques inutiles.</li>
+                        <li className="my-2"><span className="font-bold">Mutuelle Cobalt Écolo</span>: Une offre d&apos;assurance respectueuse de l&apos;environnement, reflétant notre engagement à soutenir des pratiques durables.</li>
                         <li className="my-2"><span className="font-bold">Financements Verts</span>: Nous privilégions les investissements dans des projets éco-responsables, contribuant ainsi à une économie plus verte et durable.</li>
-                        <li className="my-2"><span className="font-bold">Éducation Financière</span>: Nous proposons régulièrement des ateliers et des ressources pour sensibiliser nos clients à l'importance de la finance verte et des investissements durables.</li>
+                        <li className="my-2"><span className="font-bold">Éducation Financière</span>: Nous proposons régulièrement des ateliers et des ressources pour sensibiliser nos clients à l&apos;importance de la finance verte et des investissements durables.</li>
                     </ul>
 
                     <h3 className="text-xl text-green-500 font-semibold mb-3">Partenariats Écologiques</h3>
                     <p className="text-lg leading-relaxed mb-4">
-                        Filine s'associe avec des organisations environnementales de premier plan pour soutenir des projets de reforestation, de conservation de la biodiversité et de promotion des énergies renouvelables. Ensemble, nous œuvrons pour un avenir plus vert et plus propre.
+                        Filine s&apos;associe avec des organisations environnementales de premier plan pour soutenir des projets de reforestation, de conservation de la biodiversité et de promotion des énergies renouvelables. Ensemble, nous œuvrons pour un avenir plus vert et plus propre.
                     </p>
 
                     <p className="text-lg leading-relaxed">
-                        Notre engagement envers la planète est indéfectible. En choisissant <span className="text-green-600 font-bold">Filine</span>, vous optez pour une banque qui ne se contente pas seulement de parler d'écologie, mais qui agit concrètement pour un monde meilleur.
+                        Notre engagement envers la planète est indéfectible. En choisissant <span className="text-green-600 font-bold">Filine</span>, vous optez pour une banque qui ne se contente pas seulement de parler d&apos;écologie, mais qui agit concrètement pour un monde meilleur.
                     </p>
                 </div>
 
