@@ -23,6 +23,7 @@ export default function Home() {
 			<div className="grid text-center items-center justify-center gap-3">
 				<h2> Connexion :</h2>
 
+				<Input type="id" label="Id" className="max-w-[220px]"/>
 				<Input type="email" label="Email" className="max-w-[220px]"/>
 				<Link
 					href="/connexion"
