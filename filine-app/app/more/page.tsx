@@ -24,7 +24,9 @@ export default function VirementPage() {
             </Card>
 
             <Divider className="mt-3" />
+            <div className="flex justi">
             <p className="text-left font-semibold">Mutuelle</p>
+            </div>
             <Divider className="mt-0" />
             <p className="text-left font-semibold">Souscrire</p>
             <Divider className="mt-0" />
