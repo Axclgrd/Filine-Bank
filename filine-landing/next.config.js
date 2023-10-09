@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const withPWA = require('next-pwa')
 
 module.exports = {
     // nextConfig,
@@ -7,3 +7,5 @@ module.exports = {
         serverActions: true,
     },
 }
+
+module.exports = nextConfig
