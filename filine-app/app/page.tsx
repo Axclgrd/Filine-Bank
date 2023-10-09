@@ -14,9 +14,26 @@ import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import CompteCourant from "@/components/cc";
 import CompteEpargne from "@/components/ce";
 import AssuVie from "@/components/assuvie";
+import { useState, useEffect } from 'react';
+import { fetchUserData } from './api';
 
 
 export default function Home() {
+	const [userData, setUserData] = useState({ firstname: '', name: '' });
+
+
+	useEffect(() => {
+		async function fetchData() {
+			const data = await fetchUserData();
+			if (data) {
+				console.log("Data fetched:", data); // Ajoutez cette ligne
+				setUserData(data);
+			}
+		}
+		fetchData();
+	}, []);
+
+
 	let tabs = [
 		{
 			id: "tous",
@@ -45,8 +62,13 @@ export default function Home() {
 			<div className="flex">
 				<div className="inline-block max-w-lg text-left">
 					<h1 className={title()}>Bonjour&nbsp;</h1>
-					<h1 className={title()}>Prenom&nbsp;</h1>
-					<h1 className={title()}>Nom&nbsp;,</h1>
+					{userData && (
+						<>
+							<h1 className={title()}>{userData.firstname}&nbsp;</h1>
+							<h1 className={title()}>{userData.name}&nbsp;,</h1>
+						</>
+					)}
+
 				</div>
 			</div>
 
