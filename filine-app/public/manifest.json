@@ -1,12 +1,11 @@
 {
-    "theme_color": "#141414",
-    "background_color": "#272624",
+    "theme_color": "#f5f5f5",
+    "background_color": "#f1eeea",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Filine - Banque en ligne",
+    "name": "Filine \u2014 Banque et Assurance",
     "short_name": "Filine",
-    "description": "Mieux qu'une banque traditionnelle",
     "icons": [
         {
             "src": "/icon-192x192.png",
