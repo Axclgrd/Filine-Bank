@@ -38,7 +38,7 @@ export default function Home() {
             <div className="flex gap-3">
                 <Link
                     as={NextLink}
-                    href="/compte-courant"
+                    href="/creer-compte"
                     className={buttonStyles({color: "primary", radius: "full", variant: "shadow"})}
                 >
                     Ouvrir un compte
