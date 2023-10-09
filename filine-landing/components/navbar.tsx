@@ -30,6 +30,8 @@ import {LockIcon} from './LockIcon.jsx';
 
 import {Logo} from "@/components/icons";
 
+
+
 export const Navbar = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const SiteConfigMob = [
@@ -38,6 +40,13 @@ export const Navbar = () => {
         "Assurance Vie",
         "Mutuelle"
     ];
+
+    const redirectToAnotherPage = () => {
+        // Effectuez la redirection vers une autre page ici
+        window.location.href = 'http://localhost:3001/login';
+    };
+
+
 
     return (
         <NextUINavbar maxWidth="xl" position="sticky">
@@ -76,60 +85,7 @@ export const Navbar = () => {
                 </NavbarItem>
                 <NavbarItem className="hidden md:flex">
                     <Button className="text-sm font-normal text-default-600 bg-default-100" startContent={<UserIcon className="text-danger"/>}
-                            variant="flat" onPress={onOpen} color="primary">Mon espace</Button>
-                    <Modal
-                        isOpen={isOpen}
-                        onOpenChange={onOpenChange}
-                        placement="top-center"
-                    >
-                        <ModalContent>
-                            {(onClose) => (
-                                <>
-                                    <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-                                    <ModalBody>
-                                        <Input
-                                            autoFocus
-                                            endContent={
-                                                <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                            }
-                                            label="Email"
-                                            placeholder="Enter your email"
-                                            variant="bordered"
-                                        />
-                                        <Input
-                                            endContent={
-                                                <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                            }
-                                            label="Password"
-                                            placeholder="Enter your password"
-                                            type="password"
-                                            variant="bordered"
-                                        />
-                                        <div className="flex py-2 px-1 justify-between">
-                                            <Checkbox
-                                                classNames={{
-                                                    label: "text-small",
-                                                }}
-                                            >
-                                                Remember me
-                                            </Checkbox>
-                                            <Link color="primary" href="#" size="sm">
-                                                Forgot password?
-                                            </Link>
-                                        </div>
-                                    </ModalBody>
-                                    <ModalFooter>
-                                        <Button color="danger" variant="flat" onPress={onClose}>
-                                            Close
-                                        </Button>
-                                        <Button color="primary" onPress={onClose}>
-                                            Sign in
-                                        </Button>
-                                    </ModalFooter>
-                                </>
-                            )}
-                        </ModalContent>
-                    </Modal>
+                            variant="flat" onPress={() => { onOpen(); redirectToAnotherPage(); }} color="primary">Mon espace</Button>
                 </NavbarItem>
             </NavbarContent>
 
