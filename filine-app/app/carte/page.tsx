@@ -2,6 +2,8 @@ import {subtitle, title} from "@/components/primitives";
 import {Divider} from "@nextui-org/divider";
 import {Image} from "@nextui-org/image";
 import {Switch} from "@nextui-org/switch";
+import {AddtoWallet, Arrow, Mastercard, Visa} from "@/components/icons";
+import React from "react";
 
 export default function CartePage() {
 	return (
@@ -16,12 +18,27 @@ export default function CartePage() {
 				className={"mt-5 w-96 h-50"}
 			/>
 			<div className="mt-5">
-				<div className="flex place-content-around">
+				<div className="flex justify-between">
 					<p>Verrouillage temporaire</p>
 					<Switch aria-label="Verroullage temporaire"/>
 				</div>
 				<Divider className="mt-3"/>
+				<div className="mt-2 mb-2 flex justify-between">
+					<p>Caractéristique de ma carte</p>
+					<Arrow />
+				</div>
 
+				<Divider className="mt-0"/>
+
+				<div className="mt-2 mb-2 flex justify-between">
+					<div className="inline-flex items-center">
+						<Visa />
+						<p>&nbsp;Décrouvir les offres Visa</p>
+					</div>
+					<Arrow />
+				</div>
+
+				<Divider className="mt-0"/>
 
 
 			</div>
