@@ -18,7 +18,7 @@ export default function AboutPage() {
 		firstname: "",
 		name: "",
 		mail: "",
-		birth_date: 0,
+		birth_date: "",
 		address: "",
 		agence_id: "",
 		gestionnaire_id: "",
@@ -54,6 +54,7 @@ export default function AboutPage() {
 
 		const agenceIdStr = formData.agence_id; // Chaîne de caractères représentant l'ID de l'agence
 		const gestionnaireIdStr = formData.gestionnaire_id; // Chaîne de caractères représentant l'ID du gestionnaire
+		const birthDateTimestamp = Date.parse(formData.birth_date);
 
 		const agence_id = BigInt(agenceIdStr);
 		const gestionnaire_id = BigInt(gestionnaireIdStr);
@@ -63,7 +64,7 @@ export default function AboutPage() {
 			firstname: formData.firstname,
 			name: formData.name,
 			mail: formData.mail,
-			birth_date: formData.birth_date,
+			birth_date: birthDateTimestamp,
 			address: formData.address,
 			agence_id: agence_id.toString(),
 			gestionnaire_id: gestionnaire_id.toString(),
@@ -201,12 +202,10 @@ export default function AboutPage() {
 						type="birth-date"
 						label="Date de Naissance"
 						placeholder="Saisir votre Date de Naissance"
-						value={formData.birth_date.toString()} // Assurez-vous que la valeur est convertie en chaîne
-						onChange={(e) => {
-							const inputValue = parseInt(e.target.value); // Convertir la chaîne en nombre
-							setFormData({ ...formData, birth_date: inputValue });
-						}}
+						value={formData.birth_date}
+						onChange={(e) => setFormData({ ...formData, birth_date: e.target.value })}
 					/>
+
 					<Input
 						type="address"
 						label="Adresse"
