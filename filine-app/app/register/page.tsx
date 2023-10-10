@@ -131,16 +131,14 @@ export default function AboutPage() {
 
 
 	return (
-		<section className="flex flex-col items-center justify-center gap-6 py-8 md:py-10">
-			<div className="inline-block max-w-2xl text-center justify-center">
+
+			<div className="inline-block text-center justify-center">
+
 				<div className="flex items-center justify-center">
-					<h1 className={title( { color: "violet"} )}> Nos compte courants</h1>
+					<h1 className={title( { color: "blue"} )}> Ouvrir un compte</h1>
 				</div>
 
-				<h2 className={subtitle()}> Pourquoi prendre un compte courant chez Filine ? </h2>
-				<p className="my-4">
-					Opter pour un compte courant chez Filine, choisir la modernité, la simplicité et la sécurité. Voici quelques raisons qui font de Filine un choix judicieux pour vos besoins bancaires :
-				</p>
+				<h2 className={subtitle()}> Notre priorité votre satisfaction </h2>
 				<form onSubmit={handleSubmit} method="POST" action="http://localhost:8080/creer-compte">
 					<Input
 						type="firstname"
@@ -273,6 +271,7 @@ export default function AboutPage() {
 						<Radio value="COBALT">Cobalt</Radio>
 						<Radio value="TITANIUM">Titanium</Radio>
 					</RadioGroup>
+
 					<Input
 						value={formData.mail}
 						onChange={(e) => setFormData({ ...formData, mail: e.target.value })}
@@ -283,7 +282,7 @@ export default function AboutPage() {
 						color={isInvalid ? "danger" : "success"}
 						errorMessage={isInvalid && "Please enter a valid email"}
 						onValueChange={setValue}
-						className="max-w-xs"
+						className="mb-5 items-center"
 					/>
 					<Input
 						value={formData.password}
@@ -301,7 +300,7 @@ export default function AboutPage() {
 							</button>
 						}
 						type={isVisible ? "text" : "password"}
-						className="max-w-xs"
+						className="mb-5 items-center"
 					/>
 					<Button type="submit" color="primary">
 						Créer le compte
@@ -309,130 +308,5 @@ export default function AboutPage() {
 
 				</form>
 			</div>
-			<div className="mt-8 text-center">
-				<h2 className={title({ color: "violet"})}> Nos cartes : </h2>
-				<div className="flex grid-cols-12 gap-8 mt-2">
-					<Card className=" w-full py-4 col-span-12 sm:col-span-5">
-						<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-							<p className="text-tiny uppercase font-bold">MasterCard</p>
-							<small className="text-left text-default-500">Carte Gratuite dés 5 utilisations par mois.</small>
-						</CardHeader>
-						<CardBody className="overflow-visible py-2">
-							<Image
-								alt="Card background"
-								className="object-cover rounded-xl"
-								src="/carte_mastercard.png"
-
-								width={400}
-							/>
-							<div className="grid items-center justify-left">
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Paiement Gratuit a l&apos;international.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Sans conditions de revenus.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Carte en PVC Recyclé.</small>
-								</div>
-							</div>
-
-						</CardBody>
-					</Card>
-					<Card className=" w-full py-4 col-span-12 sm:col-span-5">
-						<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-							<p className="text-tiny uppercase font-bold">Visa Classic</p>
-							<small className="text-default-500">Dés 5€ par mois</small>
-						</CardHeader>
-						<CardBody className="overflow-visible py-2">
-							<Image
-								alt="Card background"
-								className="object-cover rounded-xl"
-								src="/visa_classic.png"
-
-								width={400}
-							/>
-							<div className="grid items-center justify-left mt-2">
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Tout de la MASTERCARD.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Assurance Voyage.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Modulable selon vos besoins.</small>
-								</div>
-							</div>
-						</CardBody>
-					</Card>
-				</div>
-				<div className="flex grid-cols-12 gap-8 mt-2">
-					<Card className=" w-full py-4 col-span-12 sm:col-span-5">
-						<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-							<p className="text-tiny uppercase font-bold">Visa Premiére</p>
-							<small className="text-default-500">Dés 10€ par mois</small>
-						</CardHeader>
-						<CardBody className="overflow-visible py-2">
-							<Image
-								alt="Card background"
-								className="object-cover rounded-xl"
-								src="/visa_premiere.png"
-
-								width={400}
-							/>
-							<div className="grid items-center justify-left">
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Tout de la VISA CLASSIC.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Offre partenaire VISA.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Assurance voyages premium.</small>
-								</div>
-							</div>
-						</CardBody>
-					</Card>
-					<Card className=" w-full py-4 col-span-12 sm:col-span-5">
-						<CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-							<p className="text-tiny uppercase font-bold">Visa Infinite</p>
-							<small className="text-default-500">Dés 20€ par mois</small>
-						</CardHeader>
-						<CardBody className="overflow-visible py-2">
-							<Image
-								alt="Card background"
-								className="object-cover rounded-xl"
-								src="/visa_infinite.png"
-
-								width={400}
-							/>
-							<div className="grid items-center justify-left mt-1">
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;TOUT DE LA VISA PREMIERE.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;CCV Evolutif.</small>
-								</div>
-								<div className="flex">
-									<CheckLogo/>
-									<small className="font-bold text-left text-default-500">&nbsp;Assurances Panne/Casse High-Tech.</small>
-								</div>
-							</div>
-						</CardBody>
-					</Card>
-				</div>
-			</div>
-		</section>
 	);
 }
