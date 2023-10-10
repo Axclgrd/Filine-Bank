@@ -201,9 +201,29 @@ export default function AboutPage() {
 					<Input
 						type="birth-date"
 						label="Date de Naissance"
-						placeholder="Saisir votre Date de Naissance"
+						placeholder="Saisir votre Date de Naissance (JJ/MM/AAAA)"
 						value={formData.birth_date}
-						onChange={(e) => setFormData({ ...formData, birth_date: e.target.value })}
+						onChange={(e) => {
+							let inputValue = e.target.value;
+
+							// Supprimez tous les caractères qui ne sont pas des chiffres ou des barres obliques
+							inputValue = inputValue.replace(/[^0-9/]/g, '');
+
+							// Si la chaîne a plus de 10 caractères, raccourcissez-la à 10 caractères
+							if (inputValue.length > 10) {
+								inputValue = inputValue.slice(0, 10);
+							}
+
+							// Formatez la valeur pour qu'elle corresponde au format JJ/MM/AAAA
+							inputValue = inputValue
+								.replace(/^(\d{2})\/?(\d{0,2})\/?(\d{0,4})/, (match, p1, p2, p3) => {
+									// Reformatage en JJ/MM/AAAA avec des barres obliques
+									return p1 + (p2 ? '/' + p2 : '') + (p3 ? '/' + p3.slice(0, 4) : '');
+								});
+
+							// Mettez à jour le champ de formulaire avec la valeur formatée
+							setFormData({ ...formData, birth_date: inputValue });
+						}}
 					/>
 
 					<Input
