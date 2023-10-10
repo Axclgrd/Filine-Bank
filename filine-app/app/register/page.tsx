@@ -144,22 +144,11 @@ export default function AboutPage() {
 				</p>
 				<form onSubmit={handleSubmit} method="POST" action="http://localhost:8080/creer-compte">
 					<Input
-						type="phone"
-						label="Téléphone"
-						placeholder="Entrer votre numéro"
-						value={formData.phone}
-						onChange={(e) => {
-							const inputValue = e.target.value;
-							// Vérifier si l'entrée est un nombre et a une longueur de 10 chiffres ou si elle est vide
-							if (/^[0-9]{0,10}$/.test(inputValue)) {
-								setFormData({ ...formData, phone: inputValue });
-							}
-						}}
-					/>
-					<Input
 						type="firstname"
 						label="Prénom"
 						placeholder="Saisir votre Prénom"
+						variant="bordered"
+						className="mb-4"
 						value={formData.firstname}
 						onChange={(e) => {
 							const inputValue = e.target.value;
@@ -181,6 +170,8 @@ export default function AboutPage() {
 					<Input type="name"
 						   label="Nom"
 						   placeholder="Saisir votre Nom"
+						   variant="bordered"
+						   className="mb-4"
 						   value={formData.name}
 						   onChange={(e) => {
 							   const inputValue = e.target.value;
@@ -199,9 +190,26 @@ export default function AboutPage() {
 						   }}
 					/>
 					<Input
+						type="phone"
+						label="Numéro de portable"
+						placeholder="Entrer votre numéro"
+						variant="bordered"
+						className="mb-4"
+						value={formData.phone}
+						onChange={(e) => {
+							const inputValue = e.target.value;
+							// Vérifier si l'entrée est un nombre et a une longueur de 10 chiffres ou si elle est vide
+							if (/^[0-9]{0,10}$/.test(inputValue)) {
+								setFormData({ ...formData, phone: inputValue });
+							}
+						}}
+					/>
+					<Input
 						type="birth-date"
 						label="Date de Naissance"
 						placeholder="Saisir votre Date de Naissance (JJ/MM/AAAA)"
+                        variant="bordered"
+                        className="mb-4"
 						value={formData.birth_date}
 						onChange={(e) => {
 							let inputValue = e.target.value;
@@ -225,17 +233,22 @@ export default function AboutPage() {
 							setFormData({ ...formData, birth_date: inputValue });
 						}}
 					/>
-
 					<Input
 						type="address"
 						label="Adresse"
 						placeholder="Saisir votre Adresse"
+						variant="bordered"
+						className="mb-4"
 						value={formData.address}
 						onChange={(e) => setFormData({ ...formData, address: e.target.value })}
 					/>
+
+					<p className="mb-2">Choisir une Agence</p>
+
 					<RadioGroup
-						label="Choisir une Agence"
 						value={formData.agence_id}
+						className="mb-2 items-center"
+						orientation="horizontal"
 						onChange={(e) => setFormData({ ...formData, agence_id: e.target.value })}
 					>
 						{(agencesData as { id: number; ville: string }[]).map((agence) => (
@@ -246,9 +259,12 @@ export default function AboutPage() {
 					</RadioGroup>
 
 
+					<p className="mb-2">Choisir un Gestionnaire</p>
+
 					<RadioGroup
-						label="Choisir un Gestionnaire"
 						value={formData.gestionnaire_id}
+						orientation="horizontal"
+						className="mb-2 items-center"
 						onChange={(e) => setFormData({ ...formData, gestionnaire_id: e.target.value })}
 					>
 						{gestionnaires.length > 0 &&
@@ -262,10 +278,12 @@ export default function AboutPage() {
 							})}
 					</RadioGroup>
 
-
+					<p className="mb-2">Choisir une Mutuelle</p>
 
 					<RadioGroup
-						label="Choisir une Mutuelle"
+						label=""
+						orientation="horizontal"
+						className="mb-5 items-center"
 						value={formData.mutuelle}
 						onChange={(e) => setFormData({ ...formData, mutuelle: String(e.target.value) })}
 					>
