@@ -1,109 +1,74 @@
-import { title } from "@/components/primitives";
-import {Input} from "@nextui-org/input";
-import {Link} from "@nextui-org/link";
-import {Button} from "@nextui-org/button";
-import {Checkbox} from "@nextui-org/checkbox";
-import {MailIcon} from '../../components/MailIcon.jsx';
-import {LockIcon} from '../../components/LockIcon.jsx';
+'use client'
+import { Input } from '@nextui-org/input';
+import { Button } from '@nextui-org/button';
+import { Link } from '@nextui-org/link';
+import axios from 'axios';
+import { useState } from 'react';
 
-// <Modal
-// 	isOpen={isOpen}
-// 	onOpenChange={onOpenChange}
-// 	placement="top-center"
-// >
-// 	<ModalContent>
-// 		{(onClose) => (
-// 			<>
-// 				<ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-// 				<ModalBody>
-// 					<Input
-// 						autoFocus
-// 						endContent={
-// 							<MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-// 						}
-// 						label="Email"
-// 						placeholder="Enter your email"
-// 						variant="bordered"
-// 					/>
-// 					<Input
-// 						endContent={
-// 							<LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-// 						}
-// 						label="Password"
-// 						placeholder="Enter your password"
-// 						type="password"
-// 						variant="bordered"
-// 					/>
-// 					<div className="flex py-2 px-1 justify-between">
-// 						<Checkbox
-// 							classNames={{
-// 								label: "text-small",
-// 							}}
-// 						>
-// 							Remember me
-// 						</Checkbox>
-// 						<Link color="primary" href="#" size="sm">
-// 							Forgot password?
-// 						</Link>
-// 					</div>
-// 				</ModalBody>
-// 				<ModalFooter>
-// 					<Button color="danger" variant="flat" onPress={onClose}>
-// 						Close
-// 					</Button>
-// 					<Button color="primary" onPress={onClose}>
-// 						Sign in
-// 					</Button>
-// 				</ModalFooter>
-// 			</>
-// 		)}
-// 	</ModalContent>
-// </Modal>
+export default function LoginPage() {
+	const [mail, setMail] = useState('');
+	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
 
-export default function DocsPage() {
+
+	const handleLogin = async () => {
+		console.log('données', mail, password);
+
+		try {
+			const response = await axios.post('http://localhost:8080/login', {
+				mail,
+				password,
+			});
+
+			console.log('Connexion réussie', response.data);
+
+			// Stockez l'adresse e-mail dans localStorage après une connexion réussie
+			localStorage.setItem('userMail', mail); // Assurez-vous que `mail` contient l'adresse e-mail
+
+			// Effectuez la redirection après une connexion réussie en utilisant window.location.href
+			window.location.href = '/';
+
+		} catch (error) {
+			console.error('Erreur de connexion', error);
+			setError('L\'e-mail ou le mot de passe est incorrect.');
+		}
+	};
+
+
+
+
 	return (
 		<div>
-			<div className="grid text-center items-center justify-center gap-3">
-				<h2> Connexion :</h2>
-				<Input
-					autoFocus
-					endContent={
-						<MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-					}
-					label="Email"
-					placeholder="Enter your email"
-					variant="bordered"
-				/>
-				<Input
-					endContent={
-						<LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-					}
-					label="Password"
-					placeholder="Enter your password"
-					type="password"
-					variant="bordered"
-				/>
-				<div className="flex py-2 px-1 justify-between">
-					<Checkbox classNames={{label: "text-small",}}>
-					Remember me
-					</Checkbox>
-					<Link color="primary" href="#" size="sm">
-						Forgot password?
-					</Link>
-				</div>
-
-				<Link
-					href="/"
-				>
-					<Button color="primary" className="w-full">Connexion</Button>
+			<h2>Connexion :</h2>
+			<Input
+				autoFocus
+				label="Email"
+				placeholder="Enter your email"
+				variant="bordered"
+				value={mail}
+				onChange={(e) => setMail(e.target.value)}
+			/>
+			<Input
+				label="Password"
+				placeholder="Enter your password"
+				type="password"
+				variant="bordered"
+				value={password}
+				onChange={(e) => setPassword(e.target.value)}
+			/>
+			<div className="flex py-2 px-1 justify-between">
+				<Link color="primary" href="#" size="sm">
+					Forgot password?
 				</Link>
-				<Link
-					href="/register"
-				>
-					<Button color="success" className="w-full">Ouvrir un compte</Button>
-				</Link>
-
 			</div>
+			<Button color="primary" onClick={handleLogin} className="w-full">
+				Connexion
+			</Button>
+			<Link href="/register">
+				<Button color="success" className="w-full">
+					Ouvrir un compte
+				</Button>
+			</Link>
 		</div>
 	);
 }
