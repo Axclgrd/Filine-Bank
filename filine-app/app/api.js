@@ -1,16 +1,15 @@
-export async function fetchUserData() {
+export async function fetchUserData(userMail) {
     try {
-        console.log("Fetching user data...");
-        const response = await fetch('http://localhost:8080/users/1'); // Utilisez l'URL absolue avec le protocole.
+        console.log("Fetching user data for user with mail:", userMail);
+        const response = await fetch(`http://localhost:8080/users/mail/${userMail}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des données utilisateur.');
         }
         const data = await response.json();
-        console.log("User data fetched:", data); // Affichez les données récupérées dans la console.
-        return data; // Cela devrait être un objet contenant les données du nom et du prénom.
+        console.log("User data fetched:", data);
+        return data;
     } catch (error) {
         console.error("Error fetching user data:", error);
         return null;
     }
 }
-

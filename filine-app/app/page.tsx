@@ -16,22 +16,34 @@ import CompteEpargne from "@/components/ce";
 import AssuVie from "@/components/assuvie";
 import { useState, useEffect } from 'react';
 import { fetchUserData } from './api';
+import axios from "axios";
 
 
 export default function Home() {
-	const [userData, setUserData] = useState({ firstname: '', name: '' });
-
+	const [userData, setUserData] = useState<{ firstname: string; name: string } | null>(null); // Spécifiez le type de userData
 
 	useEffect(() => {
-		async function fetchData() {
-			const data = await fetchUserData();
-			if (data) {
-				console.log("Data fetched:", data); // Ajoutez cette ligne
-				setUserData(data);
-			}
+		// Récupérez l'adresse e-mail stockée dans localStorage
+		const userMail = localStorage.getItem('userMail'); // Vous devrez adapter cela en fonction de la façon dont vous stockez les informations d'identification.
+		console.log('userMail:', userMail); // Ajoutez cette ligne pour vérifier la valeur de userMail
+
+		// Vérifiez si l'utilisateur est connecté (c'est-à-dire, si vous avez l'adresse e-mail de l'utilisateur)
+		if (userMail) {
+			// Appelez fetchUserData avec l'adresse e-mail en tant que paramètre
+			fetchUserData(userMail)
+				.then((userData) => {
+					if (userData) {
+						console.log('Données de l\'utilisateur connecté', userData);
+						setUserData(userData);
+					}
+				})
+				.catch((error) => {
+					console.error('Erreur lors de la récupération des données de l\'utilisateur connecté', error);
+				});
 		}
-		fetchData();
 	}, []);
+
+
 
 
 	let tabs = [
@@ -62,11 +74,13 @@ export default function Home() {
 			<div className="flex">
 				<div className="inline-block max-w-lg text-left">
 					<h1 className={title()}>Bonjour&nbsp;</h1>
-					{userData && (
+					{userData ? (
 						<>
-							<h1 className={title()}>{userData.firstname}&nbsp;</h1>
-							<h1 className={title()}>{userData.name}&nbsp;,</h1>
+							<h1>Bonjour, {userData.firstname} {userData.name} !</h1>
+							{/* Affichez les autres données de l'utilisateur ici */}
 						</>
+					) : (
+						<p>Connectez-vous pour afficher les données de l'utilisateur.</p>
 					)}
 
 				</div>
