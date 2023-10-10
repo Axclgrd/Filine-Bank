@@ -18,7 +18,7 @@ export default function AboutPage() {
 		firstname: "",
 		name: "",
 		mail: "",
-		birth_date: 0,
+		birth_date: "",
 		address: "",
 		agence_id: "",
 		gestionnaire_id: "",
@@ -54,6 +54,7 @@ export default function AboutPage() {
 
 		const agenceIdStr = formData.agence_id; // Chaîne de caractères représentant l'ID de l'agence
 		const gestionnaireIdStr = formData.gestionnaire_id; // Chaîne de caractères représentant l'ID du gestionnaire
+		const birthDateTimestamp = Date.parse(formData.birth_date);
 
 		const agence_id = BigInt(agenceIdStr);
 		const gestionnaire_id = BigInt(gestionnaireIdStr);
@@ -63,7 +64,7 @@ export default function AboutPage() {
 			firstname: formData.firstname,
 			name: formData.name,
 			mail: formData.mail,
-			birth_date: formData.birth_date,
+			birth_date: birthDateTimestamp,
 			address: formData.address,
 			agence_id: agence_id.toString(),
 			gestionnaire_id: gestionnaire_id.toString(),
@@ -206,12 +207,29 @@ export default function AboutPage() {
 					<Input
 						type="birth-date"
 						label="Date de Naissance"
-						placeholder="Saisir votre Date de Naissance"
-						variant="bordered"
-						className="mb-4"
-						value={formData.birth_date.toString()} // Assurez-vous que la valeur est convertie en chaîne
+						placeholder="Saisir votre Date de Naissance (JJ/MM/AAAA)"
+                        variant="bordered"
+                        className="mb-4"
+						value={formData.birth_date}
 						onChange={(e) => {
-							const inputValue = parseInt(e.target.value); // Convertir la chaîne en nombre
+							let inputValue = e.target.value;
+
+							// Supprimez tous les caractères qui ne sont pas des chiffres ou des barres obliques
+							inputValue = inputValue.replace(/[^0-9/]/g, '');
+
+							// Si la chaîne a plus de 10 caractères, raccourcissez-la à 10 caractères
+							if (inputValue.length > 10) {
+								inputValue = inputValue.slice(0, 10);
+							}
+
+							// Formatez la valeur pour qu'elle corresponde au format JJ/MM/AAAA
+							inputValue = inputValue
+								.replace(/^(\d{2})\/?(\d{0,2})\/?(\d{0,4})/, (match, p1, p2, p3) => {
+									// Reformatage en JJ/MM/AAAA avec des barres obliques
+									return p1 + (p2 ? '/' + p2 : '') + (p3 ? '/' + p3.slice(0, 4) : '');
+								});
+
+							// Mettez à jour le champ de formulaire avec la valeur formatée
 							setFormData({ ...formData, birth_date: inputValue });
 						}}
 					/>
