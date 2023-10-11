@@ -81,8 +81,8 @@ export default function Home() {
 							{/* Affichez les autres données de l'utilisateur ici */}
 						</>
 					) : (
-						<h1 className={title()}>Lance API, supprimer le com redirect  @prod </h1>
-						//redirect('/login')
+						//<h1 className={title()}>Bonjour&nbsp; Axel Guillouard !</h1>
+						redirect('/login')
 					)}
 
 				</div>
