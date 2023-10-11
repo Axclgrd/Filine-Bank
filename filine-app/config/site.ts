@@ -5,24 +5,24 @@ export const siteConfig = {
 	description: "Filine est une banque et assurance 100% en ligne. Ouvrez un compte courant, une assurance vie ou une mutuelle en quelques minutes.",
 	navItems: [
 		{
-			label: "Home",
+			label: "Comptes",
 			href: "/",
 		},
     {
-      label: "Docs",
-      href: "/mutuelle",
+      label: "Virements",
+      href: "/virements",
     },
     {
-      label: "Pricing",
-      href: "/register",
+      label: "Cartes",
+      href: "/carte",
     },
     {
-      label: "Blog",
-      href: "/assurance-vie",
+      label: "Assurances",
+      href: "/assurances",
     },
     {
-      label: "About",
-      href: "/compte-courant",
+      label: "Plus",
+      href: "/more",
     }
 	],
 	navMenuItems: [
