@@ -10,9 +10,12 @@ import { fetchGestionnairesByAgence } from './api';
 import {RadioGroup, Radio} from "@nextui-org/radio";
 import { Button } from "@nextui-org/button";
 import axios from 'axios'
+import { useRouter } from 'next/navigation';
+
 
 
 export default function AboutPage() {
+	const router = useRouter();
 	const [formData, setFormData] = useState({
 		phone: "",
 		firstname: "",
@@ -43,6 +46,7 @@ export default function AboutPage() {
 	const [selectedAgence, setSelectedAgence] = useState(''); // État pour stocker l'agence sélectionnée
 	const [gestionnaires, setGestionnaires] = useState<{ id: number; name: string; firstname: string }[]>([]);
 	const [selectedGestionnaire, setSelectedGestionnaire] = useState<string>('');
+
 
 	const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 		e.preventDefault(); // Empêche la soumission par défaut du formulaire
@@ -89,6 +93,12 @@ export default function AboutPage() {
 
 			if (response.status === 200) {
 				console.log('Données enregistrées avec succès !');
+				const userId = response.data.userId; // Assurez-vous que la structure de la réponse correspond à cela
+				console.log('ID de l\'utilisateur créé :', userId);
+				localStorage.setItem('userId', userId);
+				console.log(userId,'le userid')
+				router.push(`/register_bank`);
+
 			} else {
 				console.error('Erreur lors de l\'enregistrement des données.');
 			}
