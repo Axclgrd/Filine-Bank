@@ -6,7 +6,7 @@ import { Card, CardBody } from "@nextui-org/card";
 
 export default function VirementPage() {
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-lg">
+        <div className="container w-full md:w-full lg:px-20 px-4 sm:px-6">
             <h1 className={`${title()} text-center md:text-left`}>Virements</h1>
             <h1 className={`${subtitle()} text-left md:text-left mt-2`}>Je fais un virement de </h1>
 
@@ -25,7 +25,7 @@ export default function VirementPage() {
                 <p className="text-sm text-default-600 mt-1">Instantaner pour les virements en dessous de 300€</p>
             </div>
 
-            <div className="grid mt-5 gap-4 grid-cols-1 md:grid-cols-2">
+            <div className="grid mt-5 gap-4 grid-cols-1">
                 <Button
                     radius="full"
                     color="primary"

@@ -71,8 +71,8 @@ export default function Home() {
 		}
 	];
 	return (
-		<section className="flex flex-col items-start gap-4 ">
-			<div className="flex">
+		<section className="flex flex-col items-start gap-4">
+			<div className="flex flex-col md:flex-row">
 				<div className="inline-block max-w-lg text-left">
 
 					{userData ? (
@@ -89,7 +89,7 @@ export default function Home() {
 			</div>
 
 			<div className="mt-3 w-full">
-				<Tabs aria-label="Dynamic tabs" items={tabs} variant="underlined">
+				<Tabs aria-label="Affichage des différents comtpe" items={tabs} variant="underlined">
 					{(item) => (
 						<Tab key={item.id} title={item.label}>
 							<Card>

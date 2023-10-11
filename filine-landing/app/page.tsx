@@ -14,45 +14,164 @@ import {useDisclosure} from "@nextui-org/use-disclosure";
 import {color} from "framer-motion";
 import {LessWasr} from "@/components/icons";
 import {LogoAcceuil} from "@/components/icons";
+import {motion} from "framer-motion";
 
 
 export default function Home() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
+    const fadeInUp = {
+        initial: {
+            opacity: 0,
+            y: 20
+        },
+        animate: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+    const fadeInLeftToRight = {
+        initial: {
+            opacity: 0,
+            x: -20
+        },
+        animate: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const slideFadeIn = {
+        hidden: {
+            opacity: 0,
+            y: 50
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                ease: [0.6, -0.05, 0.01, 0.99]  // Bezier curve pour un effet d'overshoot et rebond doux
+            }
+        }
+    };
+
     return (
         <section className="flex flex-col items-center justify-center gap-6 py-8 md:py-10">
             <div className="inline-block max-w-2xl text-center justify-center">
                 <div className="flex items-center justify-center">
-                    <LogoAcceuil/>
-                    <h1 className={title()}>Banque &nbsp; </h1>
-                    <h1 className={title({color: "blue"})}>Filine :&nbsp;</h1>
+                    <motion.div
+                        initial="initial"
+                        animate="animate"
+                        variants={fadeInLeftToRight}
+                        transition={{delay: 0.1}}
+                    >
+                        <LogoAcceuil/>
+                    </motion.div>
+
+                    <motion.h1
+                        className={title()}
+                        initial="initial"
+                        animate="animate"
+                        variants={fadeInLeftToRight}
+                        transition={{delay: 0.3}}
+                    >
+                        Banque &nbsp;
+                    </motion.h1>
+
+                    <motion.h1
+                        className={title({color: "blue"})}
+                        initial="initial"
+                        animate="animate"
+                        variants={fadeInLeftToRight}
+                        transition={{delay: 0.5}}
+                    >
+                        Filine :&nbsp;
+                    </motion.h1>
                 </div>
-                <h1 className={title()}>
+                <motion.h1
+                    className={title()}
+                    initial="initial"
+                    animate="animate"
+                    variants={fadeInLeftToRight}
+                    transition={{delay: 0.5}}
+                >
                     Votre confiance numérique , <br/> notre engagement financier.
-                </h1>
-                <h2 className={subtitle({class: "mt-4"})}>
+                </motion.h1>
+
+                <motion.h2
+                    className={subtitle({class: "mt-4"})}
+                    initial="initial"
+                    animate="animate"
+                    variants={fadeInUp}
+                    transition={{delay: 0.3}}  // Un léger délai pour une animation séquentielle
+                >
                     Une banque du groupe ATSBANCK
-                </h2>
+                </motion.h2>
             </div>
 
             <div className="flex gap-3">
-                <Link
-                    as={NextLink}
-                    href="/creer-compte"
-                    className={buttonStyles({color: "primary", radius: "full", variant: "shadow"})}
+                <motion.div
+                    initial={{scale: 0.95}}
+                    animate={{scale: 1.05}}
+                    transition={{
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        duration: 0.7
+                    }}
+                    className="inline-block p-2 relative"  // Ajout de `relative` pour positionner le gradient absolument à l'intérieur
                 >
-                    Ouvrir un compte
-                </Link>
+                    <motion.div
+                        initial={{opacity: 0}}
+                        animate={{opacity: 0.6}}
+                        transition={{
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            duration: 0.7
+                        }}
+                        style={{
+                            background: "radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0))",
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: -1   // Pour s'assurer qu'il est sous le lien
+                        }}
+                    />
+
+                    <Link
+                        as={NextLink}
+                        href="/creer-compte"
+                        className={buttonStyles({color: "primary", radius: "full", variant: "shadow"})}
+                    >
+                        Ouvrir un compte
+                    </Link>
+                </motion.div>
             </div>
-            <Image
-                isBlurred
-                height={240}
-                src="https://celinedomecq.com/wp-content/uploads/2022/02/etre-heureux-en-couple.png"
-                alt="NextUI Album Cover"
+            <motion.div
+                variants={slideFadeIn}
+                initial="hidden"
+                animate="visible"
                 style={{width: '100vh', objectFit: 'cover'}}
-            />
+            >
+                <Image
+                    isBlurred
+                    height={240}
+                    src="https://celinedomecq.com/wp-content/uploads/2022/02/etre-heureux-en-couple.png"
+                    alt="NextUI Album Cover"
+                />
+            </motion.div>
             <div className="mt-8 text-center">
-                <h2 className={title()}> Nos services : </h2>
+                <h2 className={title( {color: "blue"})}> Nos services : </h2>
                 <div className="flex grid-cols-12 gap-8 mt-2">
                     <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
@@ -206,8 +325,10 @@ export default function Home() {
 
                                     <h3>Prêts</h3>
                                     <ul>
-                                        <li><strong>Prêt Consommation</strong> : Financez vos projets personnels, qu&apos;il
-                                            s&apos;agisse d&apos;un voyage, d&apos;une nouvelle voiture ou d&apos;un événement spécial.
+                                        <li><strong>Prêt Consommation</strong> : Financez vos projets personnels,
+                                            qu&apos;il
+                                            s&apos;agisse d&apos;un voyage, d&apos;une nouvelle voiture ou d&apos;un
+                                            événement spécial.
                                         </li>
                                         <li><strong>Prêt Immobilier</strong> : Réalisez votre rêve de propriété avec des
                                             taux compétitifs et des conditions flexibles.
@@ -215,7 +336,8 @@ export default function Home() {
                                     </ul>
 
                                     <p>
-                                        Avec <strong>Filine</strong>, gérer vos finances n&apos;a jamais été aussi simple et
+                                        Avec <strong>Filine</strong>, gérer vos finances n&apos;a jamais été aussi
+                                        simple et
                                         efficace. Explorez nos offres et trouvez celle qui vous convient le mieux.
                                     </p>
                                 </ModalBody>
@@ -238,28 +360,48 @@ export default function Home() {
                 <h2 className={title({color: "green"})}>environnemental </h2>
                 <div className="flex items-center justify-center">
                     <h2 className={title()}>de Filine&nbsp;</h2>
-                    <LessWasr />
+                    <LessWasr/>
                 </div>
                 <div className="text-left mt-8 p-5 rounded-lg shadow-large">
                     <p className="text-lg leading-relaxed mb-4">
-                        Chez <span className="text-green-600 font-bold">Filine</span>, nous sommes conscients de l&apos;impact des activités humaines sur notre planète. C&apos;est pourquoi nous avons intégré la durabilité et la responsabilité environnementale au cœur de notre stratégie d&apos;entreprise.
+                        Chez <span className="text-green-600 font-bold">Filine</span>, nous sommes conscients de
+                        l&apos;impact des activités humaines sur notre planète. C&apos;est pourquoi nous avons intégré
+                        la durabilité et la responsabilité environnementale au cœur de notre stratégie
+                        d&apos;entreprise.
                     </p>
 
                     <h3 className="text-xl text-green-500 font-semibold mb-3">Initiatives Vertes</h3>
                     <ul className="list-disc list-inside pl-5 mb-4">
-                        <li className="my-2"><span className="font-bold">Banque Numérique</span>: En étant une banque 100% en ligne, nous réduisons considérablement notre empreinte carbone en minimisant l&apos;utilisation de papier et en évitant les déplacements physiques inutiles.</li>
-                        <li className="my-2"><span className="font-bold">Mutuelle Cobalt Écolo</span>: Une offre d&apos;assurance respectueuse de l&apos;environnement, reflétant notre engagement à soutenir des pratiques durables.</li>
-                        <li className="my-2"><span className="font-bold">Financements Verts</span>: Nous privilégions les investissements dans des projets éco-responsables, contribuant ainsi à une économie plus verte et durable.</li>
-                        <li className="my-2"><span className="font-bold">Éducation Financière</span>: Nous proposons régulièrement des ateliers et des ressources pour sensibiliser nos clients à l&apos;importance de la finance verte et des investissements durables.</li>
+                        <li className="my-2"><span className="font-bold">Banque Numérique</span>: En étant une banque
+                            100% en ligne, nous réduisons considérablement notre empreinte carbone en minimisant
+                            l&apos;utilisation de papier et en évitant les déplacements physiques inutiles.
+                        </li>
+                        <li className="my-2"><span className="font-bold">Mutuelle Cobalt Écolo</span>: Une offre
+                            d&apos;assurance respectueuse de l&apos;environnement, reflétant notre engagement à soutenir
+                            des pratiques durables.
+                        </li>
+                        <li className="my-2"><span className="font-bold">Financements Verts</span>: Nous privilégions
+                            les investissements dans des projets éco-responsables, contribuant ainsi à une économie plus
+                            verte et durable.
+                        </li>
+                        <li className="my-2"><span className="font-bold">Éducation Financière</span>: Nous proposons
+                            régulièrement des ateliers et des ressources pour sensibiliser nos clients à
+                            l&apos;importance de la finance verte et des investissements durables.
+                        </li>
                     </ul>
 
                     <h3 className="text-xl text-green-500 font-semibold mb-3">Partenariats Écologiques</h3>
                     <p className="text-lg leading-relaxed mb-4">
-                        Filine s&apos;associe avec des organisations environnementales de premier plan pour soutenir des projets de reforestation, de conservation de la biodiversité et de promotion des énergies renouvelables. Ensemble, nous œuvrons pour un avenir plus vert et plus propre.
+                        Filine s&apos;associe avec des organisations environnementales de premier plan pour soutenir des
+                        projets de reforestation, de conservation de la biodiversité et de promotion des énergies
+                        renouvelables. Ensemble, nous œuvrons pour un avenir plus vert et plus propre.
                     </p>
 
                     <p className="text-lg leading-relaxed">
-                        Notre engagement envers la planète est indéfectible. En choisissant <span className="text-green-600 font-bold">Filine</span>, vous optez pour une banque qui ne se contente pas seulement de parler d&apos;écologie, mais qui agit concrètement pour un monde meilleur.
+                        Notre engagement envers la planète est indéfectible. En choisissant <span
+                        className="text-green-600 font-bold">Filine</span>, vous optez pour une banque qui ne se
+                        contente pas seulement de parler d&apos;écologie, mais qui agit concrètement pour un monde
+                        meilleur.
                     </p>
                 </div>
 
