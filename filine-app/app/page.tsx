@@ -17,11 +17,16 @@ import AssuVie from "@/components/assuvie";
 import { useState, useEffect } from 'react';
 import { fetchUserData } from './api';
 import axios from "axios";
-import {redirect} from "next/navigation";
+import { useRouter } from 'next/navigation';
+import AutoLogout from './AutoLogout'; // Assurez-vous que le chemin est correct
+
+
 
 
 export default function Home() {
 	const [userData, setUserData] = useState<{ firstname: string; name: string } | null>(null); // Spécifiez le type de userData
+	const router = useRouter();
+
 
 	useEffect(() => {
 		// Récupérez l'adresse e-mail stockée dans localStorage
@@ -41,8 +46,12 @@ export default function Home() {
 				.catch((error) => {
 					console.error('Erreur lors de la récupération des données de l\'utilisateur connecté', error);
 				});
+		} else {
+			// L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+			router.push('/login');
 		}
 	}, []);
+
 
 
 
@@ -82,14 +91,14 @@ export default function Home() {
 							{/* Affichez les autres données de l'utilisateur ici */}
 						</>
 					) : (
-						redirect('/login')
+						<p>Connectez-vous pour afficher les données de l'utilisateur.</p>
 					)}
 
 				</div>
 			</div>
 
 			<div className="mt-3 w-full">
-				<Tabs aria-label="Affichage des différents comtpe" items={tabs} variant="underlined">
+				<Tabs aria-label="Dynamic tabs" items={tabs} variant="underlined">
 					{(item) => (
 						<Tab key={item.id} title={item.label}>
 							<Card>
@@ -102,6 +111,7 @@ export default function Home() {
 				</Tabs>
 
 			</div>
+			<AutoLogout />
 		</section>
 
 	);
