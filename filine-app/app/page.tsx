@@ -17,6 +17,7 @@ import AssuVie from "@/components/assuvie";
 import { useState, useEffect } from 'react';
 import { fetchUserData } from './api';
 import axios from "axios";
+import {redirect} from "next/navigation";
 
 
 export default function Home() {
@@ -73,14 +74,15 @@ export default function Home() {
 		<section className="flex flex-col items-start gap-4 ">
 			<div className="flex">
 				<div className="inline-block max-w-lg text-left">
-					<h1 className={title()}>Bonjour&nbsp;</h1>
+
 					{userData ? (
 						<>
-							<h1>Bonjour, {userData.firstname} {userData.name} !</h1>
+							<h1 className={title()}>Bonjour&nbsp;{userData.firstname} {userData.name} !</h1>
+
 							{/* Affichez les autres données de l'utilisateur ici */}
 						</>
 					) : (
-						<p>Connectez-vous pour afficher les données de l'utilisateur.</p>
+						redirect('/login')
 					)}
 
 				</div>
