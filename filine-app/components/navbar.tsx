@@ -1,3 +1,4 @@
+'use client'
 import {
     Navbar as NextUINavbar,
     NavbarContent,
@@ -10,7 +11,6 @@ import {Input} from "@nextui-org/input";
 import {siteConfig} from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
-
 import {ThemeSwitch} from "@/components/theme-switch";
 import {
     TwitterIcon,
@@ -20,8 +20,21 @@ import {
 } from "@/components/icons";
 import {Logo} from "@/components/icons";
 import {Button} from "@nextui-org/button";
+import AutoLogout from "@/app/AutoLogout";
+import {useRouter} from "next/navigation";
 
 export const Navbar = () => {
+    const router = useRouter();
+
+    const Logout = () => {
+        const router = useRouter();
+        // Effacez les données d'authentification
+        localStorage.removeItem('userMail'); // Assurez-vous que cela correspond à la clé que vous utilisez pour stocker l'adresse e-mail
+        localStorage.removeItem('userId');
+
+        // Redirigez l'utilisateur vers la page de connexion
+        router.push('/login'); // Assurez-vous que la variable router est disponible dans ce composant
+    };
 
     return (
         <div>
@@ -60,11 +73,8 @@ export const Navbar = () => {
                         <ThemeSwitch/>
                         <NavbarItem className="hidden md:flex">
                             <Link
-                                isExternal
-                                className="text-sm font-normal text-default-600 bg-default-100"
-                                href={siteConfig.links.sponsor}
                             >
-                                <Button>
+                                <Button onClick={Logout}>
                                     Déconnexion
                                 </Button>
                             </Link>
