@@ -77,11 +77,11 @@ export default function Home() {
 
 					{userData ? (
 						<>
-							<h1 className={title()}>Bonjour&nbsp; {userData.firstname} {userData.name} !</h1>
+							<h1 className={title()}>Bonjour&nbsp;{userData.firstname} {userData.name} !</h1>
+
 							{/* Affichez les autres données de l'utilisateur ici */}
 						</>
 					) : (
-						//<h1 className={title()}>Bonjour&nbsp; Axel Guillouard !</h1>
 						redirect('/login')
 					)}
 
