@@ -27,7 +27,6 @@ export const Navbar = () => {
     const router = useRouter();
 
     const Logout = () => {
-        const router = useRouter();
         // Effacez les données d'authentification
         localStorage.removeItem('userMail'); // Assurez-vous que cela correspond à la clé que vous utilisez pour stocker l'adresse e-mail
         localStorage.removeItem('userId');

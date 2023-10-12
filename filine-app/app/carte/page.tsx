@@ -4,12 +4,14 @@ import {Divider} from "@nextui-org/divider";
 import {Image} from "@nextui-org/image";
 import {Switch} from "@nextui-org/switch";
 import {AddtoWallet, Arrow, Mastercard, Visa} from "@/components/icons";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/modal";
 import {useDisclosure} from "@nextui-org/react";
 import {Link} from "@nextui-org/link";
 import {Button} from "@nextui-org/button";
 import {Card, CardBody} from "@nextui-org/card";
+import {useRouter} from "next/navigation";
+import {fetchUserData} from "@/app/api";
 
 export default function CartePage() {
     const {isOpen: isOpenCode, onOpen: onOpenCode, onOpenChange: onOpenChangeCode} = useDisclosure();
@@ -24,6 +26,31 @@ export default function CartePage() {
         onOpenChange: onOpenChangeAssuAssis
     } = useDisclosure();
     const [isBlurred, setIsBlurred] = useState(true);
+
+    const [userData, setUserData] = useState<{ firstname: string; name: string } | null>(null)
+    const router = useRouter();
+
+
+    useEffect(() => {
+        // Récupérez l'adresse e-mail stockée dans localStorage
+        const userMail = localStorage.getItem('userMail');
+        //console.log('userMail:', userMail);
+
+        if (userMail) {
+            fetchUserData(userMail)
+                .then((userData) => {
+                    if (userData) {
+                        setUserData(userData);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Erreur lors de la récupération des données de l\'utilisateur connecté', error);
+                });
+        } else {
+            router.push('/login');
+        }
+    }, []);
+
     return (
         <div className="container text-left mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-lg">
             <h1 className={title()}>Carte</h1>
@@ -34,7 +61,7 @@ export default function CartePage() {
 
                     <Image
                         isBlurred
-                        src="/visa_infinite.png"
+                        src={userData?.model === 'VISA_BLACK' ? '/visa_infinite.png' : undefined}
                         alt="NextUI Album Cover"
                         className={"mt-5 w-96 h-50"}
                     />
