@@ -22,17 +22,24 @@ import {Logo} from "@/components/icons";
 import {Button} from "@nextui-org/button";
 import AutoLogout from "@/app/AutoLogout";
 import {useRouter} from "next/navigation";
+import {useEffect} from "react";
+import { usePathname } from 'next/navigation'
 
 export const Navbar = () => {
     const router = useRouter();
+    const currentPath = usePathname();
+    const isLoginPage = currentPath === "/login" || currentPath === "/register";
+
 
     const Logout = () => {
-        // Effacez les données d'authentification
-        localStorage.removeItem('userMail'); // Assurez-vous que cela correspond à la clé que vous utilisez pour stocker l'adresse e-mail
-        localStorage.removeItem('userId');
+        if (typeof window !== "undefined") {
+            // Vérifiez si vous êtes côté client
+            // Accédez à localStorage uniquement côté client
+            localStorage.removeItem('userMail'); // Assurez-vous que cela correspond à la clé que vous utilisez pour stocker l'adresse e-mail
 
-        // Redirigez l'utilisateur vers la page de connexion
-        router.push('/login'); // Assurez-vous que la variable router est disponible dans ce composant
+            // Redirigez l'utilisateur vers la page de connexion
+            router.push('/login');
+        }
     };
 
     return (
@@ -62,24 +69,22 @@ export const Navbar = () => {
                                 </NavbarItem>
                             ))}
                         </ul>
-
                     </NavbarContent>
-
                     <NavbarContent
                         className="hidden sm:flex basis-1/5 sm:basis-full"
                         justify="end"
                     >
                         <ThemeSwitch/>
-                        <NavbarItem className="hidden md:flex">
-                            <Link
-                            >
-                                <Button onClick={Logout}>
-                                    Déconnexion
-                                </Button>
-                            </Link>
-                        </NavbarItem>
+                        {!isLoginPage && (
+                            <NavbarItem className="hidden md:flex">
+                                <Link>
+                                    <Button onClick={Logout}>
+                                        Déconnexion
+                                    </Button>
+                                </Link>
+                            </NavbarItem>
+                        )}
                     </NavbarContent>
-
                     <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
                         <Link isExternal href={siteConfig.links.github} aria-label="Github">
                             <GithubIcon className="text-default-500"/>

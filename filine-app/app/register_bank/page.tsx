@@ -63,6 +63,9 @@ function CreateBankAccountPage() {
 				setValidationMessage('Compte créé avec succès');
 				router.push(`/`);
 
+				// Supprime l'ID utilisateur du localStorage
+				localStorage.removeItem('userId');
+
 			} else {
 				// Gérez les erreurs de manière appropriée
 				console.error('Erreur lors de la création du compte bancaire');
