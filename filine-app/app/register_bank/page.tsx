@@ -15,6 +15,8 @@ function CreateBankAccountPage() {
 	console.log('UserID from localStorage:', userId);
 	const [validationMessage, setValidationMessage] = useState<string | null>(null);
 	const router = useRouter();
+	const [isVisible, setIsVisible] = React.useState(false);
+	const toggleVisibility = () => setIsVisible(!isVisible);
 
 
 
@@ -23,6 +25,7 @@ function CreateBankAccountPage() {
 		userId: userId ? Number(userId) : null,
 		type: '',
 		model: '',
+		sid:'',
 	});
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +46,7 @@ function CreateBankAccountPage() {
 			userId: formData.userId,
 			type: formData.type,
 			model: formData.model,
+			sid:formData.sid,
 		};
 
 		// Utilisez Axios pour envoyer une requête POST à votre API pour créer le compte bancaire
@@ -116,6 +120,30 @@ function CreateBankAccountPage() {
 						<Radio value="VISA_PREMIERE">VISA PREMIERE</Radio>
 						<Radio value="VISA_BLACK">VISA BLACK</Radio>
 					</RadioGroup>
+					<Input
+						value={formData.sid}
+						onChange={(e) => {
+							const inputValue = e.target.value;
+							// Vérifier si l'entrée est un nombre et a une longueur de 10 chiffres ou si elle est vide
+							if (/^[0-9]{0,4}$/.test(inputValue)) {
+								setFormData({ ...formData, sid: inputValue });
+							}
+						}}
+						label="Secure ID"
+						variant="bordered"
+						placeholder="Entrer votre Secure ID"
+						endContent={
+							<button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+								{isVisible ? (
+									<EyeFilledSlashed className="text-2xl text-default-400 pointer-events-none" />
+								) : (
+									<EyeFilled className="text-2xl text-default-400 pointer-events-none" />
+								)}
+							</button>
+						}
+						type={isVisible ? "text" : "Secure ID"}
+						className="mb-5 items-center"
+					/>
 					<Button type="submit" color="primary">
 						Créer le compte de Banque
 					</Button>
