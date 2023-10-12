@@ -36,7 +36,6 @@ export const Navbar = () => {
             // Vérifiez si vous êtes côté client
             // Accédez à localStorage uniquement côté client
             localStorage.removeItem('userMail'); // Assurez-vous que cela correspond à la clé que vous utilisez pour stocker l'adresse e-mail
-            localStorage.removeItem('userId');
 
             // Redirigez l'utilisateur vers la page de connexion
             router.push('/login');
