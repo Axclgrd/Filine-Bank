@@ -35,7 +35,7 @@ export default function CartePage() {
                     <Card>
                         <CardBody>
                             <div>
-                                <h1>L'assurance habitation bientot disponible</h1>
+                                <h1>L&apo;sassurance habitation bientot disponible</h1>
                             </div>
                         </CardBody>
                     </Card>
@@ -65,9 +65,9 @@ export default function CartePage() {
                 <div className="md:w-1/2">
                     <h2 className="text-current font-bold text-3xl">Filine Assurance </h2>
                     <p>Prochaine sur votre espace client <strong>Filine</strong> vous pourrez accéder à différent services
-                    d'assurance proposer par sa maison mère <strong>ATS BANK</strong></p>
+                    d&apo;assurance proposer par sa maison mère <strong>ATS BANK</strong></p>
 
-                    <p>Différent type d'assurance seron disponible comme <strong>l'assurance habitation</strong> dès l'années prochaine.</p>
+                    <p>Différent type d&apo;assurance seron disponible comme <strong>l&apo;assurance habitation</strong> dès l&apo;années prochaine.</p>
                     <p>Nous sommes heureux de pouvoir proposer ces services a nos clients qui nous font chaque jour plus confiance.</p>
                 </div>
             </div>

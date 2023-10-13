@@ -16,7 +16,7 @@ import {
     TwitterIcon,
     GithubIcon,
     DiscordIcon,
-    SearchIcon, Home, Transfert, Card, Assu, MenuIcon, Carte,
+    SearchIcon, Home, Transfert, Assu, MenuIcon, Carte,
 } from "@/components/icons";
 import {Logo} from "@/components/icons";
 import {Button} from "@nextui-org/button";
