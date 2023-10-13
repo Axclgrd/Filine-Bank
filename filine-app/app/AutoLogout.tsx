@@ -7,7 +7,7 @@ export default function AutoLogout() {
 
 
     // Durée d'inactivité avant la déconnexion (en millisecondes)
-    const inactivityDuration = 60000; // 60 secondes
+    const inactivityDuration = 6000000; // 60 secondes
 
     // Créez un état pour stocker le minuteur
     const [logoutTimer, setLogoutTimer] = useState<NodeJS.Timeout | null>(null);
