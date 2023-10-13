@@ -116,12 +116,12 @@ export default function Home() {
             </div>
             <Card className="md:min-w-full" style={{width: '100%'}}>
                 <img src="/fond.png" alt="Background"
-                     className="absolute top-0 left-0 w-full h-full object-cover blur-md"/>
+                     className="absolute top-0 left-0 w-full h-full object-cover blur-sm"/>
 
 
                 <CardBody>
                     <div className="mt-5 text-center text-white">
-                        <div className="p-32 ">
+                        <div className="pt-32 pb-32">
                             <p className="text-white text-xl">Compte-courant</p>
                             <h1 className={title()}>25 000</h1>
                             <p className="text-xs">Solde du {formattedDate}</p>
@@ -129,21 +129,21 @@ export default function Home() {
                         <div className="flex justify-around">
                             <Link className="grid" href="/virements">
                                 <Button
-                                    className="rounded-full bg-gradient-to-br from-blue-300 to-blue-900 text-white shadow-lg">
+                                    className="rounded-full bg-blue-500 text-white shadow-lg">
                                     <Transfert/>
                                 </Button>
                                 <p className="text-white">Virements</p>
                             </Link>
                             <Link className="grid" href="/carte">
                                 <Button
-                                    className="rounded-full bg-gradient-to-br from-blue-300 to-blue-800 text-white shadow-lg">
+                                    className="rounded-full bg-blue-500 text-white shadow-lg">
                                     <Carte/>
                                 </Button>
                                 <p className="text-white">Carte</p>
                             </Link>
                             <Link className="grid">
                                 <Button
-                                    className="rounded-full bg-gradient-to-br from-blue-300 to-blue-800 text-white shadow-lg">
+                                    className="rounded-full bg-blue-500 text-white shadow-lg">
                                     <Transaction />
                                 </Button>
                                 <p className="text-white">Transaction</p>
