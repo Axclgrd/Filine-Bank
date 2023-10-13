@@ -11,13 +11,17 @@ export default function AssuVie() {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await fetchUserData();
-            if (data) {
-                setUserData(data);
+            // Récupérez l'adresse e-mail de l'utilisateur connecté depuis localStorage
+            const userMail = localStorage.getItem('userMail');
+            if (userMail) {
+                const data = await fetchUserData(userMail);
+                if (data) {
+                    setUserData(data);
+                }
             }
         }
         fetchData();
-    }, []); // Utilisez une dépendance vide pour exécuter cette fonction une seule fois après le montage.
+    }, []);
 
     return (
         <>

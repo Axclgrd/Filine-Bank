@@ -16,7 +16,7 @@ import {
     TwitterIcon,
     GithubIcon,
     DiscordIcon,
-    SearchIcon, Home, Transfert, Card, Assu, MenuIcon,
+    SearchIcon, Home, Transfert, Assu, MenuIcon, Carte,
 } from "@/components/icons";
 import {Logo} from "@/components/icons";
 import {Button} from "@nextui-org/button";
@@ -111,7 +111,7 @@ export const Navbar = () => {
                             href={`/virements`}
                             className="flex flex-col items-center justify-center"
                         >
-                            <Transfert className=""/>
+                            <Transfert />
                             <p className="text-black text-xs">Virements</p>
                         </Link>
                     </div>
@@ -120,7 +120,7 @@ export const Navbar = () => {
                             href={`/carte`}
                             className="flex flex-col items-center justify-center"
                         >
-                            <Card className="text-default-500"/>
+                            <Carte className="text-default-500"/>
                             <p className="text-black text-xs">Cartes</p>
                         </Link>
                     </div>
