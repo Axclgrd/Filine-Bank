@@ -109,7 +109,7 @@ export default function Home() {
                             </div>
                         </>
                     ) : (
-                        <p>Connectez-vous pour afficher les données de l'utilisateur.</p>
+                        <p>Connectez-vous pour afficher les données de l&apos;utilisateur.</p>
                     )}
 
                 </div>

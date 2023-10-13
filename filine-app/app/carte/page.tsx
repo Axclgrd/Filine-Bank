@@ -44,7 +44,7 @@ export default function CartePage() {
                     }
                 })
                 .catch((error) => {
-                    console.error('Erreur lors de la récupération des données de l\'utilisateur connecté', error);
+                    console.error('Erreur lors de la récupération des données de lutilisateur connecté', error);
                 });
         } else {
             router.push('/login');
@@ -61,7 +61,7 @@ export default function CartePage() {
 
                     <Image
                         isBlurred
-                        src={userData?.model === 'VISA_BLACK' ? '/visa_infinite.png' : undefined}
+                        src='/visa_infinite.png'
                         alt="NextUI Album Cover"
                         className={"mt-5 w-96 h-50"}
                     />
@@ -119,7 +119,7 @@ export default function CartePage() {
                     <Divider className="mt-3"/>
 
                     <div className="mt-2 mb-2 flex justify-between">
-                        <p>Paiement et retrait à l'étranger</p>
+                        <p>Paiement et retrait à l&apo;étranger</p>
                         <Switch aria-label="Paiement et retrait à l'étranger" defaultSelected/>
                     </div>
 
@@ -132,7 +132,6 @@ export default function CartePage() {
 
                     <Modal isOpen={isOpenCaracteristique} backdrop="blur" onOpenChange={onOpenChangeCaracteristique}>
                         <ModalContent>
-                            {(onClose) => (
                                 <>
                                     <ModalHeader className="flex flex-col gap-1">Caractéristique de ma
                                         carte</ModalHeader>
@@ -147,11 +146,10 @@ export default function CartePage() {
                                                 restaurants gastronomiques.
                                             </li>
                                             <li>Offres spéciales et promotions chez des partenaires sélectionnés.</li>
-                                            <li>Accès gratuit aux salons d'aéroports VIP à travers le monde.</li>
+                                            <li>Accès gratuit aux salons d&apo;aéroports VIP à travers le monde.</li>
                                         </ul>
                                     </ModalBody>
                                 </>
-                            )}
                         </ModalContent>
                     </Modal>
 
@@ -164,20 +162,19 @@ export default function CartePage() {
 
                     <Modal isOpen={isOpenAssuAssis} backdrop="blur" onOpenChange={onOpenChangeAssuAssis}>
                         <ModalContent>
-                            {(onClose) => (
                                 <>
                                     <ModalHeader className="flex flex-col gap-1">Assurance et Assistance de votre
                                         carte</ModalHeader>
                                     <ModalBody>
                                         <ul className="list-decimal pl-5 text-current">
-                                            <li>Assurance médicale internationale pour des séjours jusqu'à 90 jours.
+                                            <li>Assurance médicale internationale pour des séjours jusqu&apo;à 90 jours.
                                             </li>
-                                            <li>Assistance rapatriement en cas d'accident ou de maladie à l'étranger.
+                                            <li>Assistance rapatriement en cas d&apo;accident ou de maladie à l&apo;étranger.
                                             </li>
-                                            <li>Couverture contre l'annulation, le retard ou la perte de bagages pendant
+                                            <li>Couverture contre l&apo;annulation, le retard ou la perte de bagages pendant
                                                 les voyages.
                                             </li>
-                                            <li>Protection anti-fraude avancée avec un service de remplacement d'urgence
+                                            <li>Protection anti-fraude avancée avec un service de remplacement d&apo;urgence
                                                 de la carte.
                                             </li>
                                             <li>Assurance en cas de vol ou de dommages sur les locations de voiture.
@@ -188,7 +185,6 @@ export default function CartePage() {
                                         </ul>
                                     </ModalBody>
                                 </>
-                            )}
                         </ModalContent>
                     </Modal>
 
