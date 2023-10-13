@@ -47,9 +47,7 @@ export default function VirementPage() {
                         <Avatar isBordered color="warning" classNames={{
                             base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]"
                         }}
-                                src={userData?.name === 'Guillouard' ? '/memoji_ag.png' : undefined}
-                                src={userData?.name === 'Bourre' ? '/memoji_cb.png' : undefined}
-                                name={userData?.name !== 'Guillouard' ? userData?.firstname[0] + userData?.name[0] : undefined}
+                                src={userData?.name === 'Guillouard' ? '/memoji_ag.png' : userData?.name === 'Bourre' ? '/memoji_cb.png': undefined}
                                 size="lg" />
                         <div className="mx-5 grid">
                             <h2 className="text-lg font-semibold">{userData?.firstname} {userData?.name}</h2>
@@ -102,7 +100,7 @@ export default function VirementPage() {
             <Divider className="mt-0"/>
 
             <div className="flex justify-between mt-2 mb-2 text-current">
-                <p>Changer le thème de l'apps</p>
+                <p>Changer le thème de l&apos;apps</p>
                 <ThemeSwitch/>
             </div>
 
