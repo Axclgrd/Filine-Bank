@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {subtitle, title} from "@/components/primitives";
 import {Input} from "@nextui-org/input";
 import {CheckLogo, EyeFilled, EyeFilledSlashed} from "@/components/icons";
@@ -10,8 +10,8 @@ import {Image} from "@nextui-org/image";
 import {RadioGroup, Radio} from "@nextui-org/radio";
 import axios from "axios";
 
-function CreateBankAccountPage() {
-	const userId = localStorage.getItem('userId');
+export default function CreateBankAccountPage() {
+	const userId = typeof window !== 'undefined' ? localStorage.getItem('userId') : null;
 	console.log('UserID from localStorage:', userId);
 	const [validationMessage, setValidationMessage] = useState<string | null>(null);
 	const router = useRouter();
@@ -283,5 +283,3 @@ function CreateBankAccountPage() {
 		</section>
 	);
 }
-
-export default CreateBankAccountPage;
