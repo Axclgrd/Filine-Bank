@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function CompteCourant() {
     const [userData, setUserData] = useState({ firstname: "", name: "" });
+    const [account, setAccount] = useState({ balance: 0 });
 
     useEffect(() => {
         async function fetchData() {
@@ -15,6 +16,7 @@ export default function CompteCourant() {
                 const data = await fetchUserData(userMail);
                 if (data) {
                     setUserData(data);
+                    setAccount(data.account);
                 }
             }
         }
@@ -36,7 +38,9 @@ export default function CompteCourant() {
                             </p>
                         </div>
                         <div className="px-2 text-center">
-                            <p className="text-green-600 font-bold">25 000€</p>
+                            <p className="text-green-600 font-bold">
+                                {account.balance !== undefined ? `${account.balance}€` : 'Chargement...'}
+                            </p>
                             <Link>
                                 <Button size="sm" radius="full" color="primary">
                                     Consulter
