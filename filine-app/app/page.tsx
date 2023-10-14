@@ -19,7 +19,7 @@ import {fetchUserData} from './api';
 import axios from "axios";
 import {useRouter} from 'next/navigation';
 import AutoLogout from './AutoLogout';
-import {Avatar, AvatarGroup, AvatarIcon} from "@nextui-org/avatar";
+import {Avatar, AvatarGroup, AvatarIcon} from '@nextui-org/avatar';
 import {Image} from "@nextui-org/image";
 import {color} from "framer-motion";
 import {blue} from "color-name";
@@ -27,6 +27,7 @@ import {blue} from "color-name";
 
 export default function Home() {
     const [userData, setUserData] = useState<{ firstname: string; name: string } | null>(null); // Spécifiez le type de userData
+    const [account, setAccount] = useState({ balance: 0 });
     const router = useRouter();
     const now = new Date();
 
@@ -51,6 +52,7 @@ export default function Home() {
                     if (userData) {
                         console.log('Données de l\'utilisateur connecté', userData);
                         setUserData(userData);
+                        setAccount(userData.account);
                     }
                 })
                 .catch((error) => {
@@ -123,7 +125,7 @@ export default function Home() {
                     <div className="mt-5 text-center text-white">
                         <div className="pt-32 pb-32">
                             <p className="text-white text-xl">Compte-courant</p>
-                            <h1 className={title()}>25 000</h1>
+                            <h1 className={title()}>{account.balance !== undefined ? `${account.balance}€` : 'Chargement...'}</h1>
                             <p className="text-xs">Solde du {formattedDate}</p>
                         </div>
                         <div className="flex justify-around">

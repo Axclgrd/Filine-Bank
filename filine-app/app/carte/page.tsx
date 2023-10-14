@@ -27,20 +27,27 @@ export default function CartePage() {
     } = useDisclosure();
     const [isBlurred, setIsBlurred] = useState(true);
 
-    const [userData, setUserData] = useState<{ firstname: string; name: string } | null>(null)
-    const router = useRouter();
+    const [userData, setUserData] = useState<{
+        firstname: string;
+        name: string;
+        // Add the account property here if it exists in your data structure.
+        account?: { model: string };
+    } | null>(null);
 
+    const router = useRouter();
 
     useEffect(() => {
         // Récupérez l'adresse e-mail stockée dans localStorage
         const userMail = localStorage.getItem('userMail');
         //console.log('userMail:', userMail);
 
+
         if (userMail) {
             fetchUserData(userMail)
-                .then((userData) => {
-                    if (userData) {
-                        setUserData(userData);
+                .then((fetchedUserData) => {
+                    if (fetchedUserData) {
+                        setUserData(fetchedUserData);
+
                     }
                 })
                 .catch((error) => {
@@ -51,158 +58,162 @@ export default function CartePage() {
         }
     }, []);
 
+    let cardName;
+    let cardImage;
+    let cardLink;
+    switch (userData?.account?.model) {
+        case "MASTERCARD":
+            cardName = "Mastercard";
+            cardImage = "/carte_mastercard.png";
+            cardLink = (
+                <Link isExternal href="https://www.mastercard.ch/fr-ch/mastercard-pour-vous/trouver-une-carte/mastercard-standard.html" className="mt-2 mb-2 flex justify-between text-current">
+                    <div className="inline-flex items-center">
+                        <Mastercard />
+                        <p>&nbsp;Découvrir les offres Mastercard</p>
+                    </div>
+                    <Arrow />
+                </Link>
+            );
+            break;
+        case "VISA_CLASSIC":
+            cardName = "Visa Classic";
+            cardImage = "/visa_classic.png";
+            cardLink = (
+                <Link isExternal href="https://www.visa.fr/payer-avec-visa/ma-carte-visa/visa-classic.html" className="mt-2 mb-2 flex justify-between text-current">
+                    <div className="inline-flex items-center">
+                        <Visa />
+                        <p>&nbsp;Découvrir les offres Visa Classic</p>
+                    </div>
+                    <Arrow />
+                </Link>
+            );
+            break;
+        case "VISA_PREMIERE":
+            cardName = "Visa Premiere";
+            cardImage = "/visa_premiere.png";
+            cardLink = (
+                <Link isExternal href="https://www.visa.fr/payer-avec-visa/ma-carte-visa/visa-premier.html" className="mt-2 mb-2 flex justify-between text-current">
+                    <div className="inline-flex items-center">
+                        <Visa />
+                        <p>&nbsp;Découvrir les offres Visa Première</p>
+                    </div>
+                    <Arrow />
+                </Link>
+            );
+            break;
+        case "VISA_BLACK":
+            cardName = "Visa Infinite";
+            cardImage = "/visa_infinite.png";
+            cardLink = (
+                <Link isExternal href="https://www.visa.fr/payer-avec-visa/ma-carte-visa/visa-infinite.html" className="mt-2 mb-2 flex justify-between text-current">
+                    <div className="inline-flex items-center">
+                        <Visa />
+                        <p>&nbsp;Découvrir les offres Visa Black</p>
+                    </div>
+                    <Arrow />
+                </Link>
+            );
+            break;
+    }
+
     return (
         <div className="container text-left mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-lg">
             <h1 className={title()}>Carte</h1>
-            <h2 className={subtitle()}> Visa Infinite</h2>
-            <Divider/>
+            <h2 className={subtitle()}>{cardName}</h2>
+            <Divider />
             <div className="grid md:flex md:justify-between">
                 <div className="md:mr-7 md:w-1/2">
-
                     <Image
                         isBlurred
-                        src='/visa_infinite.png'
+                        src={cardImage}
                         alt="NextUI Album Cover"
                         className={"mt-5 w-96 h-50"}
                     />
                     <div className="mt-5">
                         <div className="flex justify-between">
                             <p>Verrouillage temporaire</p>
-                            <Switch aria-label="Verroullage temporaire"/>
+                            <Switch aria-label="Verrouillage temporaire" />
                         </div>
-
-                        <Divider className="mt-3"/>
-
+                        <Divider className="mt-3" />
                         <Link onPress={onOpenCode} className="mt-2 mb-2 flex justify-between text-current">
-                            <p>Voir code de ma carte</p>
-                            <Arrow/>
+                            <p>Voir le code de ma carte</p>
+                            <Arrow />
                         </Link>
-
                         <Modal isOpen={isOpenCode} backdrop="blur" onOpenChange={onOpenChangeCode}>
                             <ModalContent>
-                                {() => (
-                                    <>
-                                        <ModalHeader className="flex flex-col gap-1">Code confidentiel</ModalHeader>
-                                        <ModalBody>
-                                            <Card className="mb-4">
-                                                <CardBody className="text-center">
-                                                    <h1 className={`${title()} ${isBlurred ? 'blur-md' : ''}`}>2649</h1>
-                                                </CardBody>
-                                            </Card>
-                                            <Button onClick={() => setIsBlurred(!isBlurred)}>Afficher le code</Button>
-                                        </ModalBody>
-                                    </>
-                                )}
+                                <ModalHeader className="flex flex-col gap-1">Code confidentiel</ModalHeader>
+                                <ModalBody>
+                                    <Card className="mb-4">
+                                        <CardBody className="text-center">
+                                            <h1 className={`${title()} ${isBlurred ? 'blur-md' : ''}`}>2649</h1>
+                                        </CardBody>
+                                    </Card>
+                                    <Button onClick={() => setIsBlurred(!isBlurred)}>Afficher le code</Button>
+                                </ModalBody>
                             </ModalContent>
                         </Modal>
-
-                        <Divider className="mt-3"/>
-
+                        <Divider className="mt-3" />
                         <div className="mt-2 mb-2 flex justify-between">
                             <p>Mode voyage</p>
-                            <Switch aria-label="Verroullage temporaire"/>
+                            <Switch aria-label="Mode voyage" />
                         </div>
                     </div>
                 </div>
-
                 <div className="md:w-1/2">
-                    <h2 className="mt-4 text text-2xl text-left"><strong>Réglage</strong></h2>
+                    <h2 className="mt-4 text text-2xl text-left"><strong>Réglages</strong></h2>
 
                     <div className="mt-2 mb-2 flex justify-between">
                         <div className="grid text-left">
                             <p>Paiement à distance</p>
                             <p className="text-xs">internet, téléphone, abonnement</p>
                         </div>
-                        <Switch aria-label="Paiement à distance" defaultSelected/>
+                        <Switch aria-label="Paiement à distance" defaultSelected />
                     </div>
-
-                    <Divider className="mt-3"/>
-
+                    <Divider className="mt-3" />
                     <div className="mt-2 mb-2 flex justify-between">
-                        <p>Paiement et retrait à l&apo;étranger</p>
-                        <Switch aria-label="Paiement et retrait à l'étranger" defaultSelected/>
+                        <p>Paiement et retrait à l'étranger</p>
+                        <Switch aria-label="Paiement et retrait à l'étranger" defaultSelected />
                     </div>
-
-                    <h2 className="mt-4 text text-2xl text-left"><strong>Service</strong></h2>
-
-                    <Link onPress={onOpenCaracteristique} className="mt-2 mb-2 flex justify-between text-current">
-                        <p>Caractéristique de ma carte</p>
-                        <Arrow/>
-                    </Link>
-
+                    <h2 className="mt-4 text text-2xl text-left"><strong>Services</strong></h2>
+                    {cardLink}
                     <Modal isOpen={isOpenCaracteristique} backdrop="blur" onOpenChange={onOpenChangeCaracteristique}>
                         <ModalContent>
-                                <>
-                                    <ModalHeader className="flex flex-col gap-1">Caractéristique de ma
-                                        carte</ModalHeader>
-                                    <ModalBody>
-                                        <ul className="list-decimal pl-5 text-current mb-6">
-                                            <li>Limite de crédit élevée pour des achats et des retraits flexibles.</li>
-                                            <li>Technologie de paiement sans contact pour des transactions rapides et
-                                                sécurisées.
-                                            </li>
-                                            <li>Service de conciergerie disponible 24/7.</li>
-                                            <li>Avantages exclusifs dans les hôtels de luxe, boutiques de prestige et
-                                                restaurants gastronomiques.
-                                            </li>
-                                            <li>Offres spéciales et promotions chez des partenaires sélectionnés.</li>
-                                            <li>Accès gratuit aux salons d&apo;aéroports VIP à travers le monde.</li>
-                                        </ul>
-                                    </ModalBody>
-                                </>
+                            <ModalHeader className="flex flex-col gap-1">Caractéristiques de ma carte</ModalHeader>
+                            <ModalBody>
+                                <ul className="list-decimal pl-5 text-current mb-6">
+                                    <li>Limite de crédit élevée pour des achats et des retraits flexibles.</li>
+                                    <li>Technologie de paiement sans contact pour des transactions rapides et sécurisées.</li>
+                                    <li>Service de conciergerie disponible 24/7.</li>
+                                    <li>Avantages exclusifs dans les hôtels de luxe, boutiques de prestige et restaurants gastronomiques.</li>
+                                    <li>Offres spéciales et promotions chez des partenaires sélectionnés.</li>
+                                    <li>Accès gratuit aux salons d'aéroports VIP à travers le monde.</li>
+                                </ul>
+                            </ModalBody>
                         </ModalContent>
                     </Modal>
-
-                    <Divider className="mt-0"/>
-
+                    <Divider className="mt-0" />
                     <Link onPress={onOpenAssuAssis} className="mt-2 mb-2 flex justify-between text-current">
                         <p>Assurance et Assistance</p>
-                        <Arrow/>
+                        <Arrow />
                     </Link>
-
                     <Modal isOpen={isOpenAssuAssis} backdrop="blur" onOpenChange={onOpenChangeAssuAssis}>
                         <ModalContent>
-                                <>
-                                    <ModalHeader className="flex flex-col gap-1">Assurance et Assistance de votre
-                                        carte</ModalHeader>
-                                    <ModalBody>
-                                        <ul className="list-decimal pl-5 text-current">
-                                            <li>Assurance médicale internationale pour des séjours jusqu&apo;à 90 jours.
-                                            </li>
-                                            <li>Assistance rapatriement en cas d&apo;accident ou de maladie à l&apo;étranger.
-                                            </li>
-                                            <li>Couverture contre l&apo;annulation, le retard ou la perte de bagages pendant
-                                                les voyages.
-                                            </li>
-                                            <li>Protection anti-fraude avancée avec un service de remplacement d&apo;urgence
-                                                de la carte.
-                                            </li>
-                                            <li>Assurance en cas de vol ou de dommages sur les locations de voiture.
-                                            </li>
-                                            <li>Couverture pour les accidents de voyage, y compris décès et
-                                                invalidité.
-                                            </li>
-                                        </ul>
-                                    </ModalBody>
-                                </>
+                            <ModalHeader className="flex flex-col gap-1">Assurance et Assistance de votre carte</ModalHeader>
+                            <ModalBody>
+                                <ul className="list-decimal pl-5 text-current">
+                                    <li>Assurance médicale internationale pour des séjours jusqu'à 90 jours.</li>
+                                    <li>Assistance rapatriement en cas d'accident ou de maladie à l'étranger.</li>
+                                    <li>Couverture contre l'annulation, le retard ou la perte de bagages pendant les voyages.</li>
+                                    <li>Protection anti-fraude avancée avec un service de remplacement d'urgence de la carte.</li>
+                                    <li>Assurance en cas de vol ou de dommages sur les locations de voiture.</li>
+                                    <li>Couverture pour les accidents de voyage, y compris décès et invalidité.</li>
+                                </ul>
+                            </ModalBody>
                         </ModalContent>
                     </Modal>
-
-                    <Divider className="mt-0"/>
-
-                    <Link isExternal href="https://www.visa.fr/payer-avec-visa/ma-carte-visa/visa-premier.html"
-                          className="mt-2 mb-2 flex justify-between text-current">
-                        <div className="inline-flex items-center">
-                            <Visa/>
-                            <p>&nbsp;Décrouvir les offres Visa</p>
-                        </div>
-                        <Arrow/>
-                    </Link>
-
-                    <Divider className="mt-0"/>
+                    <Divider className="mt-0" />
                 </div>
             </div>
         </div>
-    )
-        ;
+    );
 }
