@@ -4,7 +4,7 @@ import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import {Divider} from "@nextui-org/divider";
 import {Card, CardBody} from "@nextui-org/card";
-import {Avatar} from "@nextui-org/react";
+import {Avatar} from "@nextui-org/avatar";
 import {ThemeSwitch} from "@/components/theme-switch";
 import React, {useEffect, useState} from "react";
 import {Arrow} from "@/components/icons";
