@@ -176,6 +176,10 @@ export default function CartePage() {
                     </div>
                     <h2 className="mt-4 text text-2xl text-left"><strong>Services</strong></h2>
                     {cardLink}
+                    <Link onPress={onOpenCaracteristique} className="mt-2 mb-2 flex justify-between text-current">
+                        <p>Caractéristiques de ma carte</p>
+                        <Arrow />
+                    </Link>
                     <Modal isOpen={isOpenCaracteristique} backdrop="blur" onOpenChange={onOpenChangeCaracteristique}>
                         <ModalContent>
                             <ModalHeader className="flex flex-col gap-1">Caractéristiques de ma carte</ModalHeader>
