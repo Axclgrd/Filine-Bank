@@ -16,7 +16,7 @@ export default function CartePage() {
     return (
         <div className="container text-left mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-lg">
             <h1 className={title()}>Assurances</h1>
-            <h2 className={subtitle()}>Vos assurances Filine</h2>
+            <h2 className={subtitle()}>Vos assurances Filine Banque</h2>
             <Divider/>
             <div className="grid md:flex md:justify-between">
                 <div className="md:mr-7 md:w-1/2">
@@ -35,39 +35,18 @@ export default function CartePage() {
                     <Card>
                         <CardBody>
                             <div>
-                                <h1>L&apo;sassurance habitation bientot disponible</h1>
+                                <h1>L&apos;assurance habitation bientôt disponible</h1>
                             </div>
                         </CardBody>
                     </Card>
-
-                    <div className="mt-5">
-                        <div className="flex justify-between">
-                            <p>Verrouillage temporaire</p>
-                            <Switch aria-label="Verroullage temporaire"/>
-                        </div>
-
-                        <Divider className="mt-3"/>
-
-                        <Link className="mt-2 mb-2 flex justify-between text-current">
-                            <p>Voir code de ma carte</p>
-                            <Arrow/>
-                        </Link>
-
-                        <Divider className="mt-3"/>
-
-                        <div className="mt-2 mb-2 flex justify-between">
-                            <p>Mode voyage</p>
-                            <Switch aria-label="Verroullage temporaire"/>
-                        </div>
-                    </div>
                 </div>
 
                 <div className="md:w-1/2">
                     <h2 className="text-current font-bold text-3xl">Filine Assurance </h2>
                     <p>Prochaine sur votre espace client <strong>Filine</strong> vous pourrez accéder à différent services
-                    d&apo;assurance proposer par sa maison mère <strong>ATS BANK</strong></p>
+                    d&apos;assurance proposer par sa maison mère <strong>ATS BANK</strong></p>
 
-                    <p>Différent type d&apo;assurance seron disponible comme <strong>l&apo;assurance habitation</strong> dès l&apo;années prochaine.</p>
+                    <p>Différent type d&apos;assurance seron disponible comme <strong>l&apos;assurance habitation</strong> dès l&apos;années prochaine.</p>
                     <p>Nous sommes heureux de pouvoir proposer ces services a nos clients qui nous font chaque jour plus confiance.</p>
                 </div>
             </div>
