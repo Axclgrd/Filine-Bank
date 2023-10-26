@@ -23,6 +23,7 @@ import {Avatar, AvatarGroup, AvatarIcon} from '@nextui-org/avatar';
 import {Image} from "@nextui-org/image";
 import {color} from "framer-motion";
 import {blue} from "color-name";
+import Mutuelle from "@/components/Mutuelle";
 
 
 export default function Home() {
@@ -87,8 +88,8 @@ export default function Home() {
         {
             id: "mutuelle",
             label: "Mutuelle",
-            content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        }
+            content:<><Mutuelle/></>
+        },
     ];
     return (
         <section className="flex flex-col items-start gap-4">
