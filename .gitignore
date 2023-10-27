@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/filine-app/node_modules
+/filine-landing/node_modules
 /.pnp
 .pnp.js
 
@@ -33,3 +35,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/filine-landing/node_modules/
