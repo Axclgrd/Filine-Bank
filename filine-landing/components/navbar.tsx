@@ -43,7 +43,7 @@ export const Navbar = () => {
 
     const redirectToAnotherPage = () => {
         // Effectuez la redirection vers une autre page ici
-        window.location.href = 'http://localhost:3001/login';
+        window.location.href = 'https://app.filine-bank.tech/';
     };
 
 
