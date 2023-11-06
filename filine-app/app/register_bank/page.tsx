@@ -52,7 +52,7 @@ export default function CreateBankAccountPage() {
 		// Utilisez Axios pour envoyer une requête POST à votre API pour créer le compte bancaire
 		try {
 			console.log('Données à envoyer à l\'API :', bankAccountData);
-			const response = await axios.post('http://localhost:8080/newaccount', bankAccountData, {
+			const response = await axios.post('https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/newaccount', bankAccountData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -88,7 +88,7 @@ export default function CreateBankAccountPage() {
 				<p className="my-4">
 					Opter pour un compte courant chez Filine, choisir la modernité, la simplicité et la sécurité. Voici quelques raisons qui font de Filine un choix judicieux pour vos besoins bancaires :
 				</p>
-				<form onSubmit={handleSubmit} method="POST" action="http://localhost:8080/creer-compte">
+				<form onSubmit={handleSubmit} method="POST" action="https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/creer-compte">
 
 					<p className="mb-2">Choisir un Livret/Assurance</p>
 
