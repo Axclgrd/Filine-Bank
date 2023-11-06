@@ -29,7 +29,7 @@ export default function Mutuelle() {
     return (
         <>
             <div className="grid w-full text-left items-center">
-                <h2>Mutuelle</h2>
+
                 {userData.mutuelle === "COBALT" && (
                     <Card className="mt-4">
                         <CardBody>

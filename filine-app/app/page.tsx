@@ -144,7 +144,7 @@ export default function Home() {
                                 </Button>
                                 <p className="text-white">Carte</p>
                             </Link>
-                            <Link className="grid">
+                            <Link className="grid" href="/transactions">
                                 <Button
                                     className="rounded-full bg-blue-500 text-white shadow-lg">
                                     <Transaction />
