@@ -23,6 +23,7 @@ import {Avatar, AvatarGroup, AvatarIcon} from '@nextui-org/avatar';
 import {Image} from "@nextui-org/image";
 import {color} from "framer-motion";
 import {blue} from "color-name";
+import Mutuelle from "@/components/Mutuelle";
 
 
 export default function Home() {
@@ -87,8 +88,8 @@ export default function Home() {
         {
             id: "mutuelle",
             label: "Mutuelle",
-            content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        }
+            content:<><Mutuelle/></>
+        },
     ];
     return (
         <section className="flex flex-col items-start gap-4">
@@ -99,7 +100,7 @@ export default function Home() {
                         <>
                             <div className="flex min-w-full items-center justify-around">
                                 <div className="flex">
-                                    <Avatar src="/memoji_ag.png" classNames={{
+                                    <Avatar  src={userData?.name === 'Guillouard' ? '/memoji_ag.png' : userData?.name === 'Bourre' ? '/memoji_cb.png' : userData?.name === 'Lafontaine' ? '/memoji_la.png' : undefined} classNames={{
                                         base: "bg-gradient-to-br from-[#8BA2FA] to-[#051A6A]"
                                     }}
                                             size="lg"/>
@@ -143,7 +144,7 @@ export default function Home() {
                                 </Button>
                                 <p className="text-white">Carte</p>
                             </Link>
-                            <Link className="grid">
+                            <Link className="grid" href="/transactions">
                                 <Button
                                     className="rounded-full bg-blue-500 text-white shadow-lg">
                                     <Transaction />

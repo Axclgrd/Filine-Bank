@@ -171,7 +171,7 @@ export default function CartePage() {
                     </div>
                     <Divider className="mt-3" />
                     <div className="mt-2 mb-2 flex justify-between">
-                        <p>Paiement et retrait à l'étranger</p>
+                        <p>Paiement et retrait à l&apos;étranger</p>
                         <Switch aria-label="Paiement et retrait à l'étranger" defaultSelected />
                     </div>
                     <h2 className="mt-4 text text-2xl text-left"><strong>Services</strong></h2>
@@ -192,7 +192,7 @@ export default function CartePage() {
                                     <li>Service de conciergerie disponible 24/7.</li>
                                     <li>Avantages exclusifs dans les hôtels de luxe, boutiques de prestige et restaurants gastronomiques.</li>
                                     <li>Offres spéciales et promotions chez des partenaires sélectionnés.</li>
-                                    <li>Accès gratuit aux salons d'aéroports VIP à travers le monde.</li>
+                                    <li>Accès gratuit aux salons d&apos;aéroports VIP à travers le monde.</li>
                                 </ul>
                             </ModalBody>
                         </ModalContent>
@@ -209,10 +209,10 @@ export default function CartePage() {
                             <ModalHeader className="flex flex-col gap-1">Assurance et Assistance de votre carte</ModalHeader>
                             <ModalBody>
                                 <ul className="list-decimal pl-5 text-current">
-                                    <li>Assurance médicale internationale pour des séjours jusqu'à 90 jours.</li>
-                                    <li>Assistance rapatriement en cas d'accident ou de maladie à l'étranger.</li>
-                                    <li>Couverture contre l'annulation, le retard ou la perte de bagages pendant les voyages.</li>
-                                    <li>Protection anti-fraude avancée avec un service de remplacement d'urgence de la carte.</li>
+                                    <li>Assurance médicale internationale pour des séjours jusqu&apos;à 90 jours.</li>
+                                    <li>Assistance rapatriement en cas d&apos;accident ou de maladie à l&apos;étranger.</li>
+                                    <li>Couverture contre l&apos;annulation, le retard ou la perte de bagages pendant les voyages.</li>
+                                    <li>Protection anti-fraude avancée avec un service de remplacement d&apos;urgence de la carte.</li>
                                     <li>Assurance en cas de vol ou de dommages sur les locations de voiture.</li>
                                     <li>Couverture pour les accidents de voyage, y compris décès et invalidité.</li>
                                 </ul>
