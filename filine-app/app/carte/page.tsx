@@ -180,6 +180,8 @@ export default function CartePage() {
                         <p>Caractéristiques de ma carte</p>
                         <Arrow />
                     </Link>
+
+
                     <Modal isOpen={isOpenCaracteristique} backdrop="blur" onOpenChange={onOpenChangeCaracteristique}>
                         <ModalContent>
                             <ModalHeader className="flex flex-col gap-1">Caractéristiques de ma carte</ModalHeader>
@@ -195,6 +197,8 @@ export default function CartePage() {
                             </ModalBody>
                         </ModalContent>
                     </Modal>
+
+
                     <Divider className="mt-0" />
                     <Link onPress={onOpenAssuAssis} className="mt-2 mb-2 flex justify-between text-current">
                         <p>Assurance et Assistance</p>
