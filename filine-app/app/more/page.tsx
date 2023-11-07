@@ -94,6 +94,7 @@ export default function VirementPage() {
                             <CardBody className="text-center">
                                 Votre mutuelle actuelle :
                                 <Mutuelle/>
+                                <p>Pour changer de mutuelle contacter votre agence.</p>
                             </CardBody>
                         </Card>
                     </ModalBody>

@@ -100,7 +100,7 @@ export default function Home() {
                         <>
                             <div className="flex min-w-full items-center justify-around">
                                 <div className="flex">
-                                    <Avatar src="/memoji_ag.png" classNames={{
+                                    <Avatar  src={userData?.name === 'Guillouard' ? '/memoji_ag.png' : userData?.name === 'Bourre' ? '/memoji_cb.png' : userData?.name === 'Lafontaine' ? '/memoji_la.png' : undefined} classNames={{
                                         base: "bg-gradient-to-br from-[#8BA2FA] to-[#051A6A]"
                                     }}
                                             size="lg"/>
