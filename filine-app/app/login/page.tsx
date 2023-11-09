@@ -23,6 +23,7 @@ export default function LoginPage() {
 
             console.log('Connexion réussie', response.data);
 
+
             // Stockez l'adresse e-mail dans localStorage après une connexion réussie
             localStorage.setItem('userMail', mail); // Assurez-vous que `mail` contient l'adresse e-mail
 

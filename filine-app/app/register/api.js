@@ -14,7 +14,7 @@ export async function fetchAgences() {
 
 export async function fetchGestionnairesByAgence(agenceId) {
     try {
-        const response = await fetch(`https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/agences/${agenceId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_FILINE}/agences/${agenceId}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des détails de l\'agence.');
         }
