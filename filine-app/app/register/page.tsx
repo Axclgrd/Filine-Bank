@@ -86,7 +86,7 @@ export default function AboutPage() {
 			console.log('Données à envoyer à l\'API :', apiFormData);
 
 			// Envoyez les données à votre API en utilisant une requête POST
-			const response = await axios.post('http://localhost:8080/newuser', apiFormData);
+			const response = await axios.post(`${process.env.NEXT_PUBLIC_API_FILINE}/newuser`, apiFormData);
 
 
 			console.log('Réponse de l\'API :', response);
@@ -150,7 +150,7 @@ export default function AboutPage() {
 				</div>
 
 				<h2 className={subtitle()}> Notre priorité votre satisfaction </h2>
-				<form onSubmit={handleSubmit} method="POST" action="http://localhost:8080/creer-compte">
+				<form onSubmit={handleSubmit} method="POST" action={`${process.env.NEXT_PUBLIC_API_FILINE}/creer-compte`}>
 					<Input
 						type="firstname"
 						label="Prénom"

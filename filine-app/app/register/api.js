@@ -1,6 +1,6 @@
 export async function fetchAgences() {
     try {
-        const response = await fetch('http://localhost:8080/agences'); // Remplacez par l'URL de votre API.
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_FILINE}/agences`); // Remplacez par l'URL de votre API.
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des données d\'agence.');
         }
@@ -14,7 +14,7 @@ export async function fetchAgences() {
 
 export async function fetchGestionnairesByAgence(agenceId) {
     try {
-        const response = await fetch(`http://localhost:8080/agences/${agenceId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_FILINE}/agences/${agenceId}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des détails de l\'agence.');
         }

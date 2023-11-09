@@ -16,7 +16,7 @@ export default function LoginPage() {
         console.log('données', mail, password);
 
         try {
-            const response = await axios.post('http://localhost:8080/login', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_FILINE}/login`, {
                 mail,
                 password,
             });
@@ -26,7 +26,6 @@ export default function LoginPage() {
 
             // Stockez l'adresse e-mail dans localStorage après une connexion réussie
             localStorage.setItem('userMail', mail); // Assurez-vous que `mail` contient l'adresse e-mail
-
 
             if (response.status === 200) {
                 // Effectuez la redirection après une connexion réussie en utilisant router.push

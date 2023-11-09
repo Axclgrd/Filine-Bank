@@ -5,7 +5,7 @@ export default async function handler(req, res) {
         const { mail, password } = req.body;
 
         // Récupère la liste des utilisateurs depuis ton API
-        const usersResponse = await axios.get('http://localhost:8080/users');
+        const usersResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_FILINE}/users`);
 
         // Recherche l'utilisateur avec l'e-mail donné
         const user = usersResponse.data.find((user) => user.mail === mail);
