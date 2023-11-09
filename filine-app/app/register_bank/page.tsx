@@ -52,7 +52,7 @@ export default function CreateBankAccountPage() {
 		// Utilisez Axios pour envoyer une requête POST à votre API pour créer le compte bancaire
 		try {
 			console.log('Données à envoyer à l\'API :', bankAccountData);
-			const response = await axios.post('https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/newaccount', bankAccountData, {
+			const response = await axios.post('http://localhost:8080/newaccount', bankAccountData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
