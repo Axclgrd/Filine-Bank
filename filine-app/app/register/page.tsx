@@ -86,7 +86,7 @@ export default function AboutPage() {
 			console.log('Données à envoyer à l\'API :', apiFormData);
 
 			// Envoyez les données à votre API en utilisant une requête POST
-			const response = await axios.post('https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/newuser', apiFormData);
+			const response = await axios.post(`${process.env.NEXT_PUBLIC_API_FILINE}/newuser`, apiFormData);
 
 
 			console.log('Réponse de l\'API :', response);
@@ -150,7 +150,7 @@ export default function AboutPage() {
 				</div>
 
 				<h2 className={subtitle()}> Notre priorité votre satisfaction </h2>
-				<form onSubmit={handleSubmit} method="POST" action="https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/creer-compte">
+				<form onSubmit={handleSubmit} method="POST" action={`${process.env.NEXT_PUBLIC_API_FILINE}/creer-compte`}>
 					<Input
 						type="firstname"
 						label="Prénom"

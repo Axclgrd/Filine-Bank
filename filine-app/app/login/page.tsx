@@ -16,7 +16,7 @@ export default function LoginPage() {
         console.log('données', mail, password);
 
         try {
-            const response = await axios.post('https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/login', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_FILINE}/login`, {
                 mail,
                 password,
             });

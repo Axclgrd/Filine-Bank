@@ -1,6 +1,6 @@
 export async function fetchAgences() {
     try {
-        const response = await fetch('https://a5a57913-582f-4696-bad9-c0ebcd057990.filine-bank.tech/agences'); // Remplacez par l'URL de votre API.
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_FILINE}/agences`); // Remplacez par l'URL de votre API.
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des données d\'agence.');
         }
