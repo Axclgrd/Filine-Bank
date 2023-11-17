@@ -104,7 +104,7 @@ export default function Home() {
                     variants={fadeInLeftToRight}
                     transition={{delay: 0.5}}
                 >
-                    Votre confiance numérique , <br/> notre engagement financier.
+                    Votre confiance numérique, <br/> notre engagement financier.
                 </motion.h1>
 
                 <motion.h2
@@ -129,24 +129,6 @@ export default function Home() {
                     }}
                     className="inline-block p-2 relative"  // Ajout de `relative` pour positionner le gradient absolument à l'intérieur
                 >
-                    <motion.div
-                        initial={{opacity: 0}}
-                        animate={{opacity: 0.6}}
-                        transition={{
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            duration: 0.7
-                        }}
-                        style={{
-                            background: "radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0))",
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            zIndex: -1   // Pour s'assurer qu'il est sous le lien
-                        }}
-                    />
 
                     <Link
                         as={NextLink}
@@ -161,34 +143,35 @@ export default function Home() {
                 variants={slideFadeIn}
                 initial="hidden"
                 animate="visible"
-                style={{width: '100vh', objectFit: 'cover'}}
             >
                 <Image
                     isBlurred
                     height={240}
-                    src="https://celinedomecq.com/wp-content/uploads/2022/02/etre-heureux-en-couple.png"
-                    alt="NextUI Album Cover"
+                    src="./banière.png"
+                    alt="Couple heureux qui utilise Filine Banque"
                 />
             </motion.div>
+
+
             <div className="mt-8 text-center">
                 <h2 className={title( {color: "blue"})}> Nos services : </h2>
                 <div className="flex grid-cols-12 gap-8 mt-2">
-                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:cursor-pointer">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">Nouveau</p>
-                            <h4 className="text-white font-medium text-2xl">Assurance vie</h4>
+                            <p className="text-tiny text-black/60 uppercase font-bold">Nouveau</p>
+                            <h4 className="text-black md:text-white font-medium text-2xl">Assurance vie</h4>
                         </CardHeader>
                         <Image
                             removeWrapper
                             alt="Card example background"
-                            className="z-0 w-full h-full -translate-y-6 object-cover"
-                            src="insurance.gif"
+                            className="z-0 w-full h-full -translate-y-6 object-cover hover:scale-125 hover:blur-[2px]"
+                            src="insurance.png"
                             //src="https://media.istockphoto.com/id/1199060622/fr/photo/concept-de-soins-familiaux-mains-avec-la-silhouette-de-papier-sur-la-table.jpg?s=612x612&w=0&k=20&c=1Q0CxaEU2jxkBGjXrqKduBrfEQsjFkkPTEf8JYgPQK8="
                         />
                         <CardFooter
                             className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
                             <div>
-                                <p className="text-black text-tiny">Conseiller disponible pour vous aidez.</p>
+                                <p className="text-black text-tiny text-left">Conseiller disponible pour vous aidez.</p>
                             </div>
                             <Button
                                 href="/assurance-vie"
@@ -202,7 +185,7 @@ export default function Home() {
                             </Button>
                         </CardFooter>
                     </Card>
-                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:cursor-pointer">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
                             <p className="text-tiny text-white/60 uppercase font-bold"></p>
                             <h4 className="text-white font-medium text-2xl">Compte courant 💳</h4>
@@ -210,14 +193,14 @@ export default function Home() {
                         <Image
                             removeWrapper
                             alt="Card example background"
-                            className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+                            className="z-0 w-full h-full -translate-y-6 object-cover hover:scale-125 hover:blur-[2px]"
                             src="https://psdstash.com/wp-content/uploads/2019/01/Credit-Card-Mockup.jpg"
                         />
                         <CardFooter
                             className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
                             <div className="text-left">
-                                <p className="text-white text-tiny">Ouvrez votre compte courant</p>
-                                <p className="text-white text-tiny">A partir de 0€</p>
+                                <p className="text-black text-tiny">Ouvrez votre compte courant</p>
+                                <p className="text-black text-tiny">A partir de 0€</p>
                             </div>
                             <Button
                                 href="/compte-courant"
@@ -233,22 +216,21 @@ export default function Home() {
                     </Card>
                 </div>
                 <div className="flex grid-cols-12 gap-8 mt-8">
-                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:cursor-pointer">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                            <p className="text-tiny text-white/60 uppercase font-bold">Bientôt disponible</p>
-                            <h4 className="text-white font-medium text-2xl">Acheter et vendez vos crypto monnaie 💰</h4>
+                            <p className="text-tiny text-black/60 uppercase font-bold">Bientôt disponible</p>
+                            <h4 className="text-black font-medium text-2xl text-left">Acheter et vendez vos crypto monnaie 💰</h4>
                         </CardHeader>
                         <Image
                             removeWrapper
                             alt="Card example background"
-                            className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-                            src="https://cryptoast.fr/wp-content/uploads/2018/11/comprendre-crypto-monnaies.jpg"
+                            className="z-0 w-full h-full -translate-y-6 object-cover hover:scale-125 hover:blur-[2px]"
+                            src="./crypto.png"
                         />
                         <CardFooter
                             className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
                             <div>
-                                <p className="text-black text-tiny">Ouvrez votre compte courant</p>
-                                <p className="text-black text-tiny">A partir de 0€ *</p>
+                                <p className="text-black text-tiny text-left">Ouvrez votre portefeuille crypto.</p>
                             </div>
                             <Button
                                 href="/assurance-vie"
@@ -263,16 +245,16 @@ export default function Home() {
                             </Button>
                         </CardFooter>
                     </Card>
-                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:cursor-pointer">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                            <p className="text-tiny text-black/60 uppercase font-bold">Nouveau</p>
-                            <h4 className="text-black font-medium text-2xl">Mutuelle 🩺</h4>
+                            <p className="text-tiny text-white/60 uppercase font-bold">Nouveau</p>
+                            <h4 className="text-white font-medium text-2xl">Mutuelle 🩺</h4>
                         </CardHeader>
                         <Image
                             removeWrapper
                             alt="Card example background"
-                            className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-                            src="https://www.ville-montmorency.fr/sites/montmorency/files/inline-images/difference-mutuelle-assurance_opt.jpg"
+                            className="z-0 w-full h-full -translate-y-6 object-cover hover:scale-125 hover:blur-[2px]"
+                            src="./mutuelle.png"
                         />
                         <CardFooter
                             className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
