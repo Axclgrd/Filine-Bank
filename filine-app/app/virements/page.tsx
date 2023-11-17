@@ -77,12 +77,17 @@ export default function VirementPage() {
     const [montant, setMontant] = useState(""); // État pour stocker la valeur saisie dans l'Input
     const [ibanExpediteur, setIbanExpediteur] = useState("");
     const [ibanDestinataire, setIbanDestinataire] = useState("");
+    const [securePass, setSID] = useState("");
     const afficherModalVirementsCC = () => {
         onOpenchangeVirementsCC();
     }
     const handleIbanChange = (e: ChangeEvent<HTMLInputElement>) => {
         // Autoriser la saisie dans le champ RIB
         setIbanDestinataire(e.target.value);
+    }
+    const handleSIDChange = (e: ChangeEvent<HTMLInputElement>) => {
+        // Autoriser la saisie dans le champ RIB
+        setSID(e.target.value);
     }
     // Fonction pour confirmer le virement compte à compte
     const confirmerVirementCC = () => {
@@ -109,6 +114,7 @@ export default function VirementPage() {
                 montant,
                 ibanExpediteur,
                 ibanDestinataire,
+                securePass
             };
             console.log('Données à envoyer:', data); // Print des données avant l'envoi à l'API
 
@@ -215,6 +221,7 @@ export default function VirementPage() {
                                 <Radio value={"CompteCourant"}><CompteCourant></CompteCourant></Radio>
                                 <Radio value={"AssuVie"}><AssuVie></AssuVie></Radio>
                             </RadioGroup>
+                            <Input type="text" variant={"bordered"} label="Secure Pass" onChange={handleSIDChange} />
                             <Button
                                 radius="full"
                                 color="success"
@@ -285,6 +292,7 @@ export default function VirementPage() {
                                     </SelectItem>
                                 )}
                             </Select>
+                            <Input type="text" variant={"bordered"} label="Secure Pass" onChange={handleSIDChange} />
                             <Button
                                 radius="full"
                                 color="success"
@@ -313,6 +321,7 @@ export default function VirementPage() {
                                         <Input type="text" variant={"bordered"} label="Nom"/>
                                         <Input type="text" variant={"bordered"} label="Prenom"  />
                                         <Input type="text" variant={"bordered"} label="RIB" onChange={handleIbanChange} />
+                                        <Input type="text" variant={"bordered"} label="Secure Pass" onChange={handleSIDChange} />
 
                                     </div>
                                 ))}

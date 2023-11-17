@@ -1,88 +1,91 @@
-"use client"
-import { subtitle, title } from "@/components/primitives";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
-import React from "react";
-import {getKeyValue} from "@nextui-org/shared-utils";
-import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell} from "@nextui-org/react";
-
-const rows = [
-    {
-        key: "1",
-        enseigne: "McDonald's France",
-        pays: "France",
-        montant: "16,50 €",
-    },
-    {
-        key: "2",
-        enseigne: "Carrefour",
-        pays: "France",
-        montant: "124,89 €",
-    },
-    {
-        key: "3",
-        enseigne: "Mercedes Benz",
-        pays: "Allemagne",
-        montant: "80 560 €",
-    },
-    {
-        key: "4",
-        enseigne: "Paul",
-        pays: "France",
-        montant: "4,50 €",
-    },
-    {
-        key: "5",
-        enseigne: "Domino's Pizza",
-        pays: "France",
-        montant: "24,50 €",
-    },
-    {
-        key: "6",
-        enseigne: "Pizza Jasmine",
-        pays: "France",
-        montant: "8,50 €",
-    },
-    {
-        key: "7",
-        enseigne: "Buraliste du chateau",
-        pays: "France",
-        montant: "11,50 €",
-    },
-];
+"use client";
+import {subtitle, title} from "@/components/primitives";
+import {Table, TableHeader, TableBody, TableColumn, TableRow, TableCell} from "@nextui-org/react";
+import {useEffect, useState} from "react";
+import {getTransactions} from './api';
+import {useRouter} from "next/navigation";
+import {fetchUserData} from "@/app/api";
 
 const columns = [
     {
-        key: "enseigne",
-        label: "ENSEINGNE",
+        key: "senderAccount",
+        label: "ENSEIGNE",
     },
     {
-        key: "pays",
-        label: "PAYS",
+        key: "createdAt",
+        label: "DATE",
     },
     {
-        key: "montant",
+        key: "amount",
         label: "MONTANT",
     },
 ];
+
+
 export default function TransactionPage() {
+    const [userData, setUserData] = useState<{
+        // Add the account property here if it exists in your data structure.
+        account?: { id: string };
+    } | null>(null);
+
+    const [transactions, setTransactions] = useState<any[]>([]); // Déclarer l'état des transactions
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            // Récupérez l'adresse e-mail stockée dans localStorage
+            const userMail = typeof window !== 'undefined' ? localStorage.getItem('userMail') : null;
+
+            if (userMail) {
+                try {
+                    const fetchedUserData = await fetchUserData(userMail);
+                    if (fetchedUserData && fetchedUserData.account && fetchedUserData.account.id) {
+                        setUserData(fetchedUserData);
+                        const accountId = fetchedUserData.account.id;
+
+                        const transactionsData = await getTransactions(accountId);
+                        setTransactions(transactionsData); // Mettre à jour l'état des transactions
+                        console.log("Transactions:", transactionsData);
+                    } else {
+                        console.error("L'ID de l'account user n'est pas disponible dans les données utilisateur.");
+                    }
+                } catch (error) {
+                    console.error('Erreur lors de la récupération des données de l\'utilisateur connecté', error);
+                }
+            } else {
+                router.push('/login');
+            }
+        };
+
+        // Appelez la fonction asynchrone
+        fetchData();
+    }, []);
+
     return (
         <div className="container w-full md:w-full lg:px-20 px-4 sm:px-6">
-            <h1 className={`${title()} text-center md:text-left`}>Transactions</h1>
-            <Table className={"mt-5"} aria-label="Example table with dynamic content">
-                <TableHeader columns={columns}>
-                    {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
-                </TableHeader>
-                <TableBody items={rows}>
-                    {(item) => (
-                        <TableRow key={item.key}>
-                            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </Table>
-
+            <h1>Transactions</h1>
+            {transactions.length > 0 ? (
+                <Table aria-label="Tableau des transactions">
+                    <TableHeader>
+                        {columns.map((column) => (
+                            <TableColumn key={column.key}>{column.label}</TableColumn>
+                        ))}
+                    </TableHeader>
+                    <TableBody>
+                        {transactions.map((item, index) => (
+                            <TableRow key={index}>
+                                {columns.map((column) => (
+                                    <TableCell key={column.key}>
+                                        {column.key === 'amount' ? `${item[column.key]} €` : item[column.key]}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            ) : (
+                <p>Aucune transaction disponible.</p>
+            )}
         </div>
     );
 }
