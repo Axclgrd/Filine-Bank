@@ -37,8 +37,8 @@ export default function AboutPage() {
         <div className="flex items-center justify-center">
 					<h1 className={title( { color: "yellow"} )}>  Nos assurances </h1>
 			  </div>
-      <h2 className={subtitle(  )}> Pourquoi souscrire a une ou plusieur chez Filine ? </h2>
-				<p className="my-4">
+      <h2 className=" text-left text-xl text-white/80 mt-2"> Pourquoi souscrire a une ou plusieur chez Filine ? </h2>
+				<p className="my-4 text-left">
 					Prendre pour une ou plusieur assurances chez nous , c'est choisir la sécuritée de vos biens. Voici quelques raisons qui font de Filine un choix judicieux pour vos besoins d'assurances :
 				</p>
 			</div>
@@ -60,23 +60,8 @@ export default function AboutPage() {
       <Image
       className="mr-3"
       width={300}
-      src="https://www.jepargneenligne.com/wp-content/uploads/2017/02/Image-principale.jpg"
+      src="./insurance.png"
       />
-      
-      <Image
-      className="ml-3"
-      width={160}
-      src="/Assurance-deces.png"
-      />
-     
-    </div>
-    <div className="flex">
-    <Image
-      className="m-3"
-      width={400}
-      src="https://www.cardif.fr/documents/4648451/4701012/differences-assurance-deces-infographie-infographie-tn-377x194.png/da8bb9f9-ddfc-41f2-919f-58d01805c93c?t=1574863286521"
-      />
-      
     </div>
 
         

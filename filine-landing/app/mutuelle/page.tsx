@@ -10,10 +10,13 @@ export default function DocsPage() {
 	return (
 		<>
 			<h1 className={title({color: "pink"})}> Nos Mutuelles</h1>
-			<p className="my-4">
+			<p className="my-4 text-left">
 				Chez Filine Mutuelle, nous comprenons l'importance de la santé et du bien-être de nos adhérents, c'est
 				pourquoi nous proposons une gamme complète de plans d'assurance santé personnalisés adaptés aux besoins
-				individuels et familiaux. Nos plans comprennent la prise en charge de diverses dépenses de santé, telles
+				individuels et familiaux.
+			</p>
+			<p className="my-p4 text-left mb-4">
+				Nos plans comprennent la prise en charge de diverses dépenses de santé, telles
 				que les consultations médicales, les médicaments, les soins dentaires, les frais d'hospitalisation et
 				bien plus encore.
 			</p>
@@ -36,6 +39,25 @@ export default function DocsPage() {
 								Accès à un réseau de médecins et de spécialistes partenaires.
 								Service client dédié pour répondre aux questions et aux demandes de remboursement.
 							</li>
+							<Card
+								isFooterBlurred
+								radius="lg"
+								className="border-none max-w-2xl mx-auto"
+							>
+								<Image
+									alt="Woman listing to music"
+									className="object-cover"
+									src="Cobalt.png"
+								/>
+								<CardFooter
+									className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+									<p className="text-tiny text-white text-center">Forfait Cobalt.</p>
+									<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
+											radius="lg" size="sm">
+										souscrire
+									</Button>
+								</CardFooter>
+							</Card>
 
 						</CardBody>
 					</Card>
@@ -59,6 +81,26 @@ export default function DocsPage() {
 								Accès à des services de télémédecine pour la consultation à distance avec des médecins.
 							</li>
 
+							<Card
+								isFooterBlurred
+								radius="lg"
+								className="border-none max-w-2xl mx-auto"
+							>
+								<Image
+									alt="Woman listing to music"
+									className="object-cover"
+									src="Lithium.png"
+								/>
+								<CardFooter
+									className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+									<p className="text-tiny text-white/80">Forfait Lithium.</p>
+									<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
+											radius="lg" size="sm">
+										souscrire
+									</Button>
+								</CardFooter>
+							</Card>
+
 						</CardBody>
 					</Card>
 				</Tab>
@@ -79,87 +121,29 @@ export default function DocsPage() {
 								Soins dentaires préventifs gratuits pour les enfants.
 								Accès à des spécialistes en pédiatrie.
 							</li>
-
+							<Card
+								isFooterBlurred
+								radius="lg"
+								className="border-none max-w-2xl mx-auto"
+							>
+								<Image
+									alt="Woman listing to music"
+									className="object-cover"
+									src="Titanium.png"
+								/>
+								<CardFooter
+									className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+									<p className="text-tiny text-white/80">Forfait Titanium.</p>
+									<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
+											radius="lg" size="sm">
+										souscrire
+									</Button>
+								</CardFooter>
+							</Card>
 						</CardBody>
 					</Card>
 				</Tab>
 			</Tabs>
-
-
-			<div className="flex">
-				<div className="m-3">
-					<Card
-						isFooterBlurred
-						radius="lg"
-						className="border-none"
-					>
-						<Image
-							alt="Woman listing to music"
-							className="object-cover"
-							height={400}
-							src="Cobalt.png"
-							width={400}
-						/>
-						<CardFooter
-							className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-							<p className="text-tiny text-white/80">Forfait Cobalt.</p>
-							<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
-									radius="lg" size="sm">
-								souscrire
-							</Button>
-						</CardFooter>
-					</Card>
-				</div>
-				<div className="m-3">
-					<Card
-						isFooterBlurred
-						radius="lg"
-						className="border-none"
-					>
-						<Image
-							alt="Woman listing to music"
-							className="object-cover"
-							height={400}
-							src="Lithium.png"
-							width={400}
-						/>
-						<CardFooter
-							className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-							<p className="text-tiny text-white/80">Forfait Lithium.</p>
-							<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
-									radius="lg" size="sm">
-								souscrire
-							</Button>
-						</CardFooter>
-					</Card>
-				</div>
-
-
-				<div className="m-3">
-					<Card
-						isFooterBlurred
-						radius="lg"
-						className="border-none"
-					>
-						<Image
-							alt="Woman listing to music"
-							className="object-cover"
-							height={400}
-							src="Titanium.png"
-							width={400}
-						/>
-						<CardFooter
-							className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-							<p className="text-tiny text-white/80">Forfait Titanium.</p>
-							<Button className="text-tiny text-white bg-black/20" variant="flat" color="default"
-									radius="lg" size="sm">
-								souscrire
-							</Button>
-						</CardFooter>
-					</Card>
-				</div>
-
-			</div>
 
 		</>
 	);

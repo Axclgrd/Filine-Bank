@@ -328,9 +328,15 @@ export default function Home() {
                                     <Button color="danger" variant="light" onPress={onClose}>
                                         Fermer
                                     </Button>
-                                    <Button color="primary" onPress={onClose}>
+                                    <Link
+                                        href={"https://app.filine-bank.tech/login"}
+                                    >
+                                        <Button color="primary" >
                                         Ouvrir un compte
                                     </Button>
+
+                                    </Link>
+
                                 </ModalFooter>
                             </>
                         )}
