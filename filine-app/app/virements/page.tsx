@@ -118,7 +118,7 @@ export default function VirementPage() {
             };
             console.log('Données à envoyer:', data); // Print des données avant l'envoi à l'API
 
-            const response = await axios.post('http://localhost:8080/virements', data);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_FILINE}/virements`, data);
 
             if (response.status === 200)  {
                 console.log('Virement effectué avec succès !');
